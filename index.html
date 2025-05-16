@@ -117,6 +117,7 @@
     .auth-buttons {
       display: flex;
       gap: 15px;
+      align-items: center;
     }
 
     .auth-buttons a {
@@ -137,6 +138,55 @@
 
     .auth-buttons a:active {
       transform: translateY(-1px);
+    }
+
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .user-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: white;
+      color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    .user-dropdown {
+      position: absolute;
+      top: 50px;
+      right: 0;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      width: 200px;
+      overflow: hidden;
+      display: none;
+      z-index: 1001;
+    }
+
+    .user-dropdown a {
+      display: block;
+      padding: 12px 20px;
+      color: var(--text-dark);
+      text-decoration: none;
+      transition: background-color var(--transition-speed) ease;
+    }
+
+    .user-dropdown a:hover {
+      background-color: #f5f5f5;
+    }
+
+    .user-profile:hover .user-dropdown {
+      display: block;
     }
 
     /* Hero Section */
@@ -485,6 +535,11 @@
       .tagline {
         font-size: 1.2rem;
       }
+
+      .user-dropdown {
+        top: 40px;
+        right: -20px;
+      }
     }
 
     @media (max-width: 768px) {
@@ -522,6 +577,10 @@
       .services-grid {
         grid-template-columns: 1fr;
       }
+
+      .auth-buttons {
+        gap: 8px;
+      }
     }
   </style>
 </head>
@@ -543,8 +602,21 @@
       </ul>
     </nav>
     <div class="auth-buttons">
-      <a href="login and register.html">Login</a>
-      <a href="login and register.html">Register</a>
+      <!-- Change this part to show either login/register or user profile -->
+      <div id="authState">
+        <!-- Default state shows login/register -->
+        <a href="login and register.html">Register or Login</a>
+        
+        <!-- When logged in, this will show instead (hidden by default) -->
+        <div class="user-profile" style="display: none;">
+          <div class="user-avatar">JS</div>
+          <div class="user-dropdown">
+            <a href="profile.html"><i class="fas fa-user"></i> My Profile</a>
+            <a href="order.html"><i class="fas fa-shopping-cart"></i> My Orders</a>
+            <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="menu-toggle" id="menuToggle">
       <i class="fas fa-bars"></i>
@@ -697,6 +769,22 @@
       offset: 120
     });
 
+    // Check if user is logged in (this would normally come from your authentication system)
+    const isLoggedIn = false; // Change to true to test logged in state
+    const authState = document.getElementById('authState');
+    const loginLink = authState.querySelector('a');
+    const userProfile = authState.querySelector('.user-profile');
+
+    if (isLoggedIn) {
+      // If logged in, show user profile and hide login link
+      loginLink.style.display = 'none';
+      userProfile.style.display = 'flex';
+      
+      // Set user initials (would normally come from user data)
+      const userInitials = 'JS'; // Example: John Smith
+      document.querySelector('.user-avatar').textContent = userInitials;
+    }
+
     // Header scroll effect
     window.addEventListener('scroll', function() {
       const header = document.querySelector('.main-header');
@@ -751,6 +839,14 @@
         });
       }
     }
+
+    // Logout functionality
+    document.getElementById('logoutBtn')?.addEventListener('click', function(e) {
+      e.preventDefault();
+      // Here you would normally call your logout API
+      // For this demo, we'll just reload the page
+      window.location.reload();
+    });
   </script>
 </body>
 </html>
