@@ -362,14 +362,14 @@ body {
 
 /* Hero Section */
 /* This is where the main background image is set */
-.hero-section {
-    background: url('ss') no-repeat center center/cover;
-    color: white; /* Default text color for content */
-    text-align: center;
-    padding: 100px 20px;
-    position: relative;
-    overflow: hidden; /* Needed if content slides in */
-}
+/* .hero-section {
+/*     background: url('ss') no-repeat center center/cover;
+/*     color: white; /* Default text color for content */ */
+/*     text-align: center; */
+/*     padding: 100px 20px; */
+/*     position: relative; */
+/*     overflow: hidden; /* Needed if content slides in */ */ */
+} */
 
 /* Overlay to make text readable over the background image */
 .hero-section::before {
