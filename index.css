@@ -363,7 +363,7 @@ body {
 /* Hero Section */
 /* This is where the main background image is set */
 .hero-section {
-    background: url('Signage Hub (1).png') no-repeat center center/cover;
+    background: url('ss') no-repeat center center/cover;
     color: white; /* Default text color for content */
     text-align: center;
     padding: 100px 20px;
