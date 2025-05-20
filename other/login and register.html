@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login / Register – Signage Hub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="signage hub logo 2-1.png" />
+</head>
+<body class="bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center min-h-screen">
+
+  <div class="bg-white p-10 pl-20 rounded-2xl shadow-2xl w-full max-w-xl animate-fade-in-down">
+
+    <!-- Logo and Title -->
+    <div class="flex items-center justify-start gap-6 mb-8">
+      <a href="index.html" class="flex gap-4 items-center hover:opacity-80 transition">
+        <img src="signage hub logo 2-1.png" alt="Signage Hub Logo" class="w-20 h-20" />
+        <div class="flex flex-col justify-center h-full">
+          <span class="text-4xl font-bold text-blue-700 leading-tight">Signage Hub</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Dynamic Form Title -->
+    <h2 id="formTitle" class="text-xl font-semibold mb-4 text-center text-gray-700 transition-all duration-300">Login</h2>
+
+    <!-- Error/Success Messages -->
+    <div id="authMessage" class="hidden mb-4 p-3 rounded text-sm"></div>
+
+    <!-- Login Form -->
+    <div id="loginForm">
+      <form class="space-y-4">
+        <div>
+          <input type="email" placeholder="Email" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400" required />
+          <div class="text-red-500 text-sm mt-1" id="loginEmailError"></div>
+        </div>
+        <div>
+          <input type="password" placeholder="Password" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400" required />
+          <div class="text-red-500 text-sm mt-1" id="loginPasswordError"></div>
+        </div>
+        <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition-all flex justify-center items-center">
+          <span class="button-text">Login</span>
+          <svg class="animate-spin h-5 w-5 ml-2 text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+        </button>
+      </form>
+      <div class="text-center mt-4 space-y-2">
+        <p class="text-sm">
+          Don't have an account?
+          <button onclick="toggleForm('registerForm')" class="text-blue-600 hover:underline">Register</button>
+        </p>
+        <button onclick="toggleForm('resetForm')" class="text-sm text-blue-600 hover:underline">Forgot password?</button>
+      </div>
+    </div>
+
+    <!-- Register Form -->
+    <div id="registerForm" class="hidden">
+      <form class="space-y-4">
+        <div>
+          <input type="text" placeholder="Username" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-green-400" required />
+          <div class="text-red-500 text-sm mt-1" id="registerNameError"></div>
+        </div>
+        <div>
+          <input type="email" placeholder="Email" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-green-400" required />
+          <div class="text-red-500 text-sm mt-1" id="registerEmailError"></div>
+        </div>
+        <div>
+          <input type="password" placeholder="Password" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-green-400" required />
+          <div class="text-red-500 text-sm mt-1" id="registerPasswordError"></div>
+        </div>
+        <div>
+          <input type="password" placeholder="Confirm Password" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-green-400" required />
+          <div class="text-red-500 text-sm mt-1" id="registerConfirmError"></div>
+        </div>
+        <div class="flex items-center">
+          <input type="checkbox" id="terms" class="mr-2" required />
+          <label for="terms" class="text-sm">I agree to the <a href="#" class="text-blue-600 hover:underline">Terms & Conditions</a></label>
+        </div>
+        <button type="submit" class="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 transition-all flex justify-center items-center">
+          <span class="button-text">Register</span>
+          <svg class="animate-spin h-5 w-5 ml-2 text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+        </button>
+      </form>
+      <p class="text-sm text-center mt-4">
+        Already have an account?
+        <button onclick="toggleForm('loginForm')" class="text-blue-600 hover:underline">Login</button>
+      </p>
+    </div>
+
+    <!-- Password Reset Form -->
+    <div id="resetForm" class="hidden">
+      <form class="space-y-4">
+        <div>
+          <input type="email" placeholder="Enter your email" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400" required />
+          <div class="text-red-500 text-sm mt-1" id="resetEmailError"></div>
+        </div>
+        <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition-all flex justify-center items-center">
+          <span class="button-text">Reset Password</span>
+          <svg class="animate-spin h-5 w-5 ml-2 text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+        </button>
+      </form>
+      <p class="text-sm text-center mt-4">
+        Remember your password?
+        <button onclick="toggleForm('loginForm')" class="text-blue-600 hover:underline">Login</button>
+      </p>
+    </div>
+
+    <!-- Divider -->
+    <div class="flex items-center my-6">
+      <hr class="flex-grow border-gray-300" />
+      <span class="mx-3 text-gray-400 text-sm">or</span>
+      <hr class="flex-grow border-gray-300" />
+    </div>
+
+    <!-- Google Sign-In -->
+    <div class="text-center">
+      <button id="googleSignInBtn" class="bg-white text-gray-700 border border-gray-300 rounded px-4 py-2 shadow flex items-center gap-2 mx-auto hover:shadow-md transition">
+        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google Logo" class="w-5 h-5" />
+        Sign in with Google
+      </button>
+    </div>
+  </div>
+
+  <!-- Firebase Auth Script -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-app.js";
+    import { 
+      getAuth, 
+      createUserWithEmailAndPassword, 
+      signInWithEmailAndPassword, 
+      GoogleAuthProvider, 
+      signInWithPopup,
+      sendPasswordResetEmail,
+      updateProfile
+    } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-auth.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-analytics.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDsFA7bsReGxPISwfax9Cg71khQunFrZxk",
+      authDomain: "signage-hub.firebaseapp.com",
+      projectId: "signage-hub",
+      storageBucket: "signage-hub.firebasestorage.app",
+      messagingSenderId: "785565518737",
+      appId: "1:785565518737:web:edf765be8a83710f57a830",
+      measurementId: "G-E52Q44PJRC"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const analytics = getAnalytics(app);
+
+    // Form toggle function
+    window.toggleForm = function (formToShow) {
+      document.getElementById("loginForm").classList.add("hidden");
+      document.getElementById("registerForm").classList.add("hidden");
+      document.getElementById("resetForm").classList.add("hidden");
+      document.getElementById(formToShow).classList.remove("hidden");
+      document.getElementById("formTitle").innerText = formToShow === "loginForm" ? "Login" : 
+        formToShow === "registerForm" ? "Register" : "Reset Password";
+    };
+
+    // Show message function
+    function showMessage(message, type = 'error') {
+      const messageDiv = document.getElementById('authMessage');
+      messageDiv.classList.remove('hidden', 'bg-red-100', 'text-red-700', 'bg-green-100', 'text-green-700');
+      messageDiv.classList.add(type === 'error' ? 'bg-red-100' : 'bg-green-100');
+      messageDiv.classList.add(type === 'error' ? 'text-red-700' : 'text-green-700');
+      messageDiv.textContent = message;
+    }
+
+    // Toggle loading state
+    function toggleLoading(button, isLoading) {
+      const spinner = button.querySelector('svg');
+      const buttonText = button.querySelector('.button-text');
+      button.disabled = isLoading;
+      spinner.classList.toggle('hidden', !isLoading);
+      buttonText.textContent = isLoading ? 'Processing...' : buttonText.dataset.defaultText;
+    }
+
+    // Redirect to index
+    function redirectToIndex(user) {
+      const displayName = user.displayName || user.email;
+      localStorage.setItem("displayName", displayName);
+      window.location.href = "index.html";
+    }
+
+    // Password validation
+    function validatePassword(password) {
+      const minLength = 8;
+      const hasUpperCase = /[A-Z]/.test(password);
+      const hasNumber = /\d/.test(password);
+      return password.length >= minLength && hasUpperCase && hasNumber;
+    }
+
+    // Register user
+    const registerForm = document.querySelector("#registerForm form");
+    registerForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const button = registerForm.querySelector('button[type="submit"]');
+      toggleLoading(button, true);
+
+      const name = registerForm.querySelector('input[type="text"]').value;
+      const email = registerForm.querySelector('input[type="email"]').value;
+      const password = registerForm.querySelectorAll('input[type="password"]')[0].value;
+      const confirmPassword = registerForm.querySelectorAll('input[type="password"]')[1].value;
+
+      // Validation
+      if (password !== confirmPassword) {
+        showMessage('Passwords do not match');
+        toggleLoading(button, false);
+        return;
+      }
+
+      if (!validatePassword(password)) {
+        showMessage('Password must be at least 8 characters with a number and uppercase letter');
+        toggleLoading(button, false);
+        return;
+      }
+
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        await updateProfile(userCredential.user, { displayName: name });
+        showMessage('Registration successful! Redirecting...', 'success');
+        setTimeout(() => redirectToIndex(userCredential.user), 1500);
+      } catch (error) {
+        showMessage('Registration failed: ' + error.message);
+        toggleLoading(button, false);
+      }
+    });
+
+    // Login user
+    const loginForm = document.querySelector("#loginForm form");
+    loginForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const button = loginForm.querySelector('button[type="submit"]');
+      toggleLoading(button, true);
+
+      const email = loginForm.querySelector('input[type="email"]').value;
+      const password = loginForm.querySelector('input[type="password"]').value;
+
+      try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        showMessage('Login successful! Redirecting...', 'success');
+        setTimeout(() => redirectToIndex(userCredential.user), 1500);
+      } catch (error) {
+        showMessage('Login failed: ' + error.message);
+        toggleLoading(button, false);
+      }
+    });
+
+    // Password reset
+    const resetForm = document.querySelector("#resetForm form");
+    resetForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const button = resetForm.querySelector('button[type="submit"]');
+      toggleLoading(button, true);
+
+      const email = resetForm.querySelector('input[type="email"]').value;
+
+      try {
+        await sendPasswordResetEmail(auth, email);
+        showMessage('Password reset email sent! Check your inbox.', 'success');
+        toggleForm('loginForm');
+      } catch (error) {
+        showMessage('Password reset failed: ' + error.message);
+      }
+      toggleLoading(button, false);
+    });
+
+    // Google sign-in
+    document.getElementById("googleSignInBtn").addEventListener("click", async () => {
+      try {
+        const provider = new GoogleAuthProvider();
+        const result = await signInWithPopup(auth, provider);
+        showMessage('Google sign-in successful! Redirecting...', 'success');
+        setTimeout(() => redirectToIndex(result.user), 1500);
+      } catch (error) {
+        showMessage('Google sign-in failed: ' + error.message);
+      }
+    });
+
+    // Store default button texts
+    document.querySelectorAll('.button-text').forEach(span => {
+      span.dataset.defaultText = span.textContent;
+    });
+  </script>
+
+  <!-- Animations -->
+  <style>
+    @keyframes fade-in-down {
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in-down {
+      animation: fade-in-down 0.5s ease-out;
+    }
+  </style>
+</body>
+</html>

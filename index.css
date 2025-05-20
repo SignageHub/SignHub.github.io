@@ -1,0 +1,1624 @@
+/* ========================================================== */
+/* GENERAL STYLES & UTILITIES */
+/* ========================================================== */
+
+body {
+    margin: 0;
+    /* Use a more common web-safe or linked font */
+    /* example using the Google Font linked in HTML: */
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6; /* Improved readability */
+    color: #555; /* Default text color */
+    overflow-x: hidden; /* Prevent horizontal scroll caused by animations */
+}
+
+/* Container for centering content */
+.container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto; /* Center block elements */
+    padding: 0 15px; /* Add horizontal padding */
+    box-sizing: border-box; /* Include padding in width */
+}
+
+/* Section Titles */
+.section-title {
+    font-size: 36px; /* Make titles bigger */
+    margin-bottom: 15px; /* Adjust spacing */
+    color: #333;
+    text-align: center; /* Center all main titles */
+    position: relative; /* For potential underline effect */
+    padding-bottom: 10px;
+}
+
+.section-title::after { /* Optional: Add an underline effect */
+    content: '';
+    display: block;
+    width: 60px; /* Width of the underline */
+    height: 3px; /* Thickness of the underline */
+    background-color: #cb1b2c; /* Color matching the primary color */
+    margin: 10px auto 0; /* Center the underline */
+}
+
+
+/* Section Subtitles */
+.section-subtitle {
+    font-size: 18px;
+    color: #666;
+    text-align: center;
+    margin-bottom: 40px; /* Space below the subtitle */
+}
+
+/* Buttons */
+.btn {
+    display: inline-block; /* Allows padding and margins */
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px; /* Slightly rounded corners */
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover & press effect */
+    text-align: center;
+    border: 2px solid transparent; /* Add transparent border for hover effect */
+    cursor: pointer; /* Indicate clickable */
+}
+
+.btn:active {
+     transform: scale(0.98); /* Subtle press effect */
+}
+
+
+.btn-primary {
+    background: #cb1b2c;
+    color: white;
+    border-color: #cb1b2c;
+}
+
+.btn-primary:hover {
+    background: #b21827;
+    border-color: #b21827;
+    color: white; /* Ensure text stays white */
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #cb1b2c;
+    border-color: #cb1b2c;
+}
+
+.btn-secondary:hover {
+    background: #cb1b2c;
+    color: white;
+    border-color: #cb1b2c; /* Border color stays the same or changes */
+}
+
+.btn-light { /* Button often used on dark backgrounds */
+    background: white;
+    color: #cb1b2c;
+    border-color: white;
+}
+
+.btn-light:hover {
+    background: #eee;
+    color: #a51420;
+    border-color: #eee;
+}
+
+/* Make Service Card Links behave correctly */
+.service-card a.service-link {
+    display: block; /* Make the link fill the card */
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit text color from parent (the card) */
+    padding: 0;
+    margin: 0;
+}
+
+
+/* ========================================================== */
+/* TOP BAR IMPROVED STYLES (Based on previous refinement) */
+/* ========================================================== */
+
+.top-bar {
+    background: linear-gradient(to right, #cb1b2c, #1d4f91); /* Keep gradient */
+    color: white;
+    padding: 18px 0; /* Increased vertical padding */
+    font-size: 14px;
+}
+
+.top-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto; /* Center */
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Vertically align the three main blocks */
+    flex-wrap: wrap; /* Allow blocks to wrap on smaller screens */
+    padding: 0 15px; /* Add horizontal padding */
+    box-sizing: border-box;
+    gap: 25px; /* Increased gap between the main blocks (left, middle, social) */
+}
+
+.left-side {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between logo and tagline */
+    flex-shrink: 0; /* Prevent logo/tagline block from shrinking */
+    flex-grow: 0;
+    flex-basis: auto; /* Initial size based on content */
+}
+
+.logo {
+    height: 65px; /* Made top logo bigger */
+    flex-shrink: 0;
+    transition: height 0.3s ease; /* Smooth transition if size changes */
+}
+
+.tagline {
+    font-weight: 500;
+    font-size: 16px; /* Slightly larger tagline font */
+    flex-shrink: 0;
+}
+
+/* Contact Info Section - Using Flexbox for layout */
+.middle-info {
+    display: flex;
+    gap: 30px; /* Space between each contact info block (phone, email, address) */
+    flex-wrap: wrap; /* Allow individual contact blocks to wrap */
+    align-items: flex-start; /* Align items to the top if they have different heights */
+    font-size: 13px;
+    margin: 0;
+    flex-grow: 1; /* Allow middle section to take available space */
+    justify-content: center; /* Center contact blocks within the middle section when there's space */
+}
+
+/* Each individual contact info block (phone, email, address) */
+.middle-info div {
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Stack icon, label, and value vertically */
+    align-items: flex-start; /* Align content to the left within the column */
+    gap: 4px; /* Small space between stacked items (icon, span, strong) */
+}
+
+.middle-info i {
+    color: #ffcc70; /* Keep icon color */
+    font-size: 18px; /* Slightly larger icons */
+    flex-shrink: 0; /* Prevent icon from shrinking */
+    margin-bottom: 2px; /* Add slight space below icon */
+}
+
+/* Style for the first line of text (Call anytime, Send email, Address line 1) */
+.middle-info span {
+    font-size: 12px; /* Smaller label font */
+    opacity: 0.9; /* Slightly less prominent */
+    flex-shrink: 0;
+}
+
+/* Style for the bold text (phone number, email, address line 2) */
+.middle-info strong {
+    display: block; /* Ensure it takes its own line */
+    font-weight: bold;
+    font-size: 14px; /* Slightly larger value font */
+    margin-left: 0; /* Remove any residual margin */
+}
+
+
+/* Social icons */
+.social-icons {
+     display: flex; /* Use flexbox for icons */
+     align-items: center;
+     gap: 15px; /* Increased space between social icons */
+     flex-shrink: 0; /* Prevent social icons block from shrinking */
+     margin: 0;
+}
+
+.social-icons a {
+    color: white; /* Keep default social icon color white */
+    font-size: 19px;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-icons a:hover {
+    color: #ffcc70; /* Keep social icon hover color */
+}
+
+
+/* Navigation bar (kept same as previous refinement) */
+.navbar {
+    background-color: #fff;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08); /* Stronger shadow */
+    position: sticky; /* Make the navbar sticky */
+    top: 0; /* Stick to the top */
+    z-index: 1000; /* Ensure it stays on top of other content */
+}
+
+.nav-container {
+    width: 100%; /* Use 100% and rely on container padding */
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 15px; /* Increased vertical padding */
+    box-sizing: border-box;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 35px; /* Increased gap */
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li a {
+    color: #444;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px; /* Slightly larger font */
+    transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: #cb1b2c;
+}
+
+.right-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Increased gap */
+}
+
+.right-nav i {
+    font-size: 20px; /* Slightly larger icon */
+    color: #555; /* Darker icon color */
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.right-nav i:hover {
+    color: #cb1b2c;
+}
+
+.book-btn {
+    /* Uses the .btn styles defined above */
+    background: #cb1b2c;
+    border: none;
+    padding: 10px 20px; /* Adjusted padding */
+    color: #fff;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.book-btn:hover {
+    background: #b21827;
+}
+
+
+/* ========================================================== */
+/* SECTION STYLES (Including Location) */
+/* ========================================================== */
+
+/* Hero Section */
+/* This is where the main background image is set */
+.hero-section {
+    background: url('gallery/hero-background.jpg') no-repeat center center/cover;
+    color: white; /* Default text color for content */
+    text-align: center;
+    padding: 100px 20px;
+    position: relative;
+    overflow: hidden; /* Needed if content slides in */
+}
+
+/* Overlay to make text readable over the background image */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Adjust opacity (0.5 here) to control how much the background shows */
+    z-index: 1; /* Place overlay above background image */
+}
+
+/* Content container - sits above the overlay */
+.hero-content {
+    position: relative;
+    z-index: 2; /* Place content above overlay */
+    max-width: 900px;
+    margin: 0 auto;
+    /* Initial state for animation */
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideInUpFade 0.8s ease-out forwards;
+     animation-delay: 0.5s; /* Delay after header loads */
+}
+
+/* Styling for the Headline */
+.hero-content h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    color: white; /* Ensure text is white (or readable color) on the overlay */
+     /* Removed background-clip styling */
+}
+
+.hero-content p {
+    font-size: 20px;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.hero-buttons .btn {
+    margin: 0 10px;
+}
+
+
+/* About Us Section */
+.about-section {
+    padding: 80px 0;
+    background-color: #fff;
+    overflow: hidden; /* Needed if content slides in */
+}
+
+.about-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 40px;
+}
+
+.about-image {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+}
+
+.about-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.about-text {
+    flex: 2;
+    min-width: 300px;
+}
+
+.about-text p {
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #666;
+}
+
+.about-text ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.about-text ul li {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #555;
+}
+
+.about-text ul li i {
+    color: #1d4f91; /* Keep About Us list icon color */
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+
+/* Services Section */
+.services-section {
+    padding: 80px 0;
+    background-color: #f9f9f9;
+    overflow: hidden; /* Needed if content slides in */
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-card {
+    background: white; /* White background for cards */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    /* Initial state for animation */
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.service-card:hover { /* Style when hovering over a card */
+    transform: translateY(-10px); /* Lift the card slightly */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15); /* Increase shadow on hover */
+    background-color: #f0f0f0; /* Example: Lighten background on hover */
+}
+
+/* Ensure content inside the link does not change hover effect weirdly */
+.service-card a.service-link h3,
+.service-card a.service-link p,
+.service-card a.service-link i {
+   color: inherit; /* Inherit color from parent card */
+   transition: color 0.3s ease; /* Smooth color change on hover */
+}
+
+/* Change icon and text color when hovering over the card */
+.service-card:hover a.service.link h3,
+.service-card:hover a.service-link p,
+.service-card:hover a.service-link i {
+   color: #cb1b2c; /* <-- Changed Service Icon and Text Hover Color to Red */
+}
+
+.service-card h3 { /* Style for the service title (e.g., 3D Signs) */
+    font-size: 22px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #333; /* Default text color */
+}
+
+.service-card p { /* Style for the service description */
+    font-size: 15px;
+    color: #666; /* Default text color */
+}
+
+.service-icon { /* Style for the icon */
+    font-size: 48px;
+    color: #1d4f91; /* <-- Changed Service Icon Default Color to Blue */
+    margin-bottom: 20px;
+}
+
+
+/* Projects/Gallery Section */
+.projects-section {
+    padding: 80px 0;
+    background-color: #fff;
+    overflow: hidden; /* Needed if content slides in */
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.project-card {
+    background: #f8f8f8;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Initial state for animation */
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.project-card:hover {
+     transform: translateY(-5px);
+     box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+
+.project-card img {
+    width: 100%;
+    height: 300px; /* <-- Increased Project Image Height */
+    object-fit: cover; /* Ensures image covers the area without distortion */
+    display: block;
+    transition: transform 0.5s ease; /* Already has a zoom transition */
+}
+
+.project-card:hover img {
+    transform: scale(1.05);
+}
+
+
+.project-info {
+    padding: 15px 20px;
+    text-align: left;
+}
+
+.project-info h3 {
+    font-size: 18px;
+    margin: 0 0 5px;
+    color: #333;
+}
+
+.project-info p {
+    font-size: 14px;
+    color: #777;
+    margin: 0;
+}
+
+
+/* Why Choose Us Section */
+.why-choose-us-section {
+    padding: 80px 0;
+    background-color: #1d4f91;
+    color: white;
+    text-align: center;
+    overflow: hidden; /* Needed if content slides in */
+}
+
+.why-choose-us-section .section-title,
+.why-choose-us-section .section-subtitle {
+    color: white;
+}
+
+.why-choose-us-section .section-title::after {
+    background-color: #ffcc70;
+}
+
+.why-choose-us-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.why-choose-us-item {
+    /* Changed background from transparent white to slightly opaque blue */
+    background: rgba(29, 79, 145, 0.8); /* Using an opaque version of the section blue */
+    padding: 25px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* Initial state for animation */
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.why-icon {
+    font-size: 45px;
+    color: #ffcc70; /* Keep Why Choose Us icon color */
+    margin-bottom: 15px;
+}
+
+.why-choose-us-item h3 {
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.why-choose-us-item p {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+
+/* Call to Action Section */
+.cta-section {
+    background: url('gallery/cta-background.jpg') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+    position: relative;
+    overflow: hidden; /* Needed if content slides in */
+}
+
+.cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.cta-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+    /* Initial state for animation */
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.cta-content h2 {
+    font-size: 38px;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.cta-content p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.cta-content .btn {
+     /* Uses .btn-light styles */
+}
+
+
+/* Testimonials Section */
+.testimonials-section {
+    background: #f4f2ef;
+    padding: 80px 0;
+    text-align: center;
+    overflow: hidden; /* Needed if content slides in */
+}
+
+.testimonials {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.testimonial-card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    width: 300px;
+    font-size: 16px;
+    text-align: center;
+    position: relative;
+    /* Initial state for animation */
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.testimonial-card p {
+    font-style: italic;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.testimonial-card strong {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    color: #cb1b2c; /* Keep testimonial name color */
+    font-size: 17px;
+}
+
+.testimonial-card span {
+    display: block;
+    font-size: 14px;
+    color: #777;
+}
+
+.client-photo {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 15px;
+    border: 3px solid #cb1b2c; /* Keep client photo border color */
+}
+
+
+/* Contact Section */
+.contact-section {
+    padding: 80px 0;
+    background-color: #f9f9f9;
+    overflow: hidden; /* Needed if content slides in */
+}
+
+.contact-content-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.contact-info {
+    flex: 1;
+    min-width: 300px;
+    /* Initial state for animation */
+    opacity: 0;
+    transform: translateX(-20px); /* Slide from left */
+}
+
+.contact-form {
+    flex: 1.5;
+    min-width: 300px;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    /* Initial state for animation */
+    opacity: 0;
+    transform: translateX(20px); /* Slide from right */
+}
+
+
+.contact-info .section-title {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.contact-info .section-title::after {
+    margin: 10px 0 0 0;
+}
+
+
+.contact-info p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.contact-details div {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #555;
+}
+
+.contact-details i {
+    color: #cb1b2c; /* Keep Contact Info icon color */
+    margin-right: 10px;
+    font-size: 20px;
+    margin-top: 3px;
+}
+
+.contact-details strong {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.contact-social {
+    margin-top: 30px;
+}
+
+.contact-social h4 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.contact-social .social-icons a {
+    color: #555; /* Keep contact social default icon color */
+    margin-right: 15px;
+    margin-left: 0;
+    font-size: 22px;
+    transition: color 0.3s ease;
+}
+
+.contact-social .social-icons a:hover {
+    color: #cb1b2c; /* Keep contact social hover icon color */
+}
+
+
+.form-title {
+    font-size: 24px;
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+    font-size: 15px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.contact-form button.btn-primary {
+    width: auto;
+    display: inline-block;
+}
+
+.map-embed {
+    margin-top: 40px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+
+/* Newsletter Section */
+.newsletter-section {
+    background: #d4b49b;
+    padding: 60px 0;
+    text-align: center;
+    color: white;
+    overflow: hidden; /* Needed if content slides in */
+}
+
+.newsletter-content {
+    max-width: 800px;
+    margin: 0 auto;
+    /* Initial state for animation */
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.newsletter-section h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.newsletter-section p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+
+.newsletter-form {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.newsletter-form input[type="email"] {
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    width: 300px;
+    font-size: 16px;
+}
+
+.newsletter-form button {
+    background: #cb1b2c;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.newsletter-form button:hover {
+    background: #a51420;
+}
+
+
+/* ========================================================== */
+/* LOCATION SECTION STYLES */
+/* ========================================================== */
+
+.location-section {
+    padding: 80px 0;
+    background-color: #fff;
+    text-align: center; /* Center content */
+    overflow: hidden; /* Needed if using slide-up animation */
+}
+
+/* section-title styles already defined */
+
+.location-section p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 30px; /* Space below subtitle/intro text */
+    max-width: 800px; /* Limit width of introductory text */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.location-address { /* Style for the address paragraph */
+     font-size: 16px;
+     color: #333;
+     font-weight: bold;
+     margin-top: 20px; /* Space above address */
+     margin-bottom: 0; /* Space below address */
+}
+
+
+.location-map {
+    max-width: 900px; /* Limit map width */
+    margin: 0 auto; /* Center the map container */
+    border-radius: 8px; /* Rounded corners for the map */
+    overflow: hidden; /* Ensure corners are rounded */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* Add shadow to the map */
+     /* Initial state for animation if not using AOS */
+    /* opacity: 0;
+    transform: translateY(20px);
+     animation: slideInUpFade 0.8s ease-out forwards 0.5s; */
+}
+
+.location-map iframe {
+    display: block; /* Remove extra space below iframe */
+}
+
+
+/* ========================================================== */
+/* FOOTER (Enhancements) */
+/* ========================================================== */
+
+.main-footer {
+    background-color: #111;
+    color: #bbb;
+    padding: 60px 0 20px;
+    font-size: 15px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: space-between;
+    padding: 0 15px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 20px;
+}
+
+.footer-section h4 {
+    color: #fff;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.footer-about .footer-logo {
+    height: 75px; /* Made footer logo bigger */
+    margin-bottom: 15px;
+    display: block;
+    transition: height 0.3s ease; /* Smooth transition */
+}
+
+
+.footer-section p, .footer-section ul li {
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li a {
+    color: #bbb;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: #fff;
+}
+
+.footer-contact i {
+    color: #cb1b2c; /* Keep Contact Info icon color in footer */
+    margin-right: 10px;
+    font-size: 17px;
+}
+
+.footer-social {
+    margin-top: 20px;
+}
+
+.footer-social a {
+    color: #bbb; /* Keep footer social default icon color */
+    margin-right: 15px;
+    font-size: 20px;
+    transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: white; /* Keep footer social hover icon color */
+}
+
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 14px;
+    border-top: 1px solid #333;
+    padding-top: 20px;
+    color: #999;
+}
+
+.footer-bottom a {
+    color: #999;
+    text-decoration: none;
+}
+
+.footer-bottom a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+
+/* ========================================================== */
+/* SIMPLE CSS ANIMATIONS */
+/* (These run on page load. Scroll-triggered needs JavaScript) */
+/* ========================================================== */
+
+/* Define the animation */
+@keyframes slideInUpFade {
+    from {
+        opacity: 0;
+        transform: translateY(30px); /* Start slightly below final position */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* End at natural position */
+    }
+}
+
+@keyframes slideInLeftFade {
+    from {
+        opacity: 0;
+        transform: translateX(-30px); /* Start slightly left */
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0); /* End at natural position */
+    }
+}
+
+@keyframes slideInRightFade {
+    from {
+        opacity: 0;
+        transform: translateX(30px); /* Start slightly right */
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0); /* End at natural position */
+    }
+}
+
+
+/* Apply animations to various elements/sections */
+/* Animation will play once when the page loads */
+
+/* Initial state for elements that will animate */
+/* Add this initial state to any element you apply animation to */
+/*
+.animated-element { // Use this class on elements you want to animate
+    opacity: 0;
+    transform: translateY(30px); // Default slide-up
+}
+*/
+
+
+/* Apply animations to specific components within sections */
+
+/* Animate Hero content */
+/* Assuming hero content is within .hero-content */
+.hero-content {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideInUpFade 0.8s ease-out forwards;
+     animation-delay: 0.5s; /* Delay after header loads */
+}
+
+
+/* Animate About Us Content */
+/* Assuming about content is within .about-content */
+/* Apply animation to child flex items */
+.about-content .about-image,
+.about-content .about-text {
+    opacity: 0;
+    transform: translateY(30px); /* Slide up */
+    animation: slideInUpFade 0.8s ease-out forwards;
+     animation-delay: 0.4s; /* Delay after section title */
+}
+
+.about-content .about-text {
+    animation-delay: 0.5s; /* Stagger text after image */
+}
+
+
+/* Animate Service Cards */
+.service-card {
+    /* Initial state (opacity: 0, transform: translateY(20px)) defined above */
+    animation: slideInUpFade 0.6s ease-out forwards;
+    /* Simple CSS staggering for service cards (adjust delays as needed) */
+}
+
+.services-grid article:nth-child(1) { animation-delay: 0.3s; }
+.services-grid article:nth-child(2) { animation-delay: 0.4s; }
+.services-grid article:nth-child(3) { animation-delay: 0.5s; }
+.services-grid article:nth-child(4) { animation-delay: 0.6s; }
+.services-grid article:nth-child(5) { animation-delay: 0.7s; }
+.services-grid article:nth-child(6) { animation-delay: 0.8s; }
+.services-grid article:nth-child(7) { animation-delay: 0.9s; }
+.services-grid article:nth-child(8) { animation-delay: 1.0s; }
+
+
+/* Animate Project Cards */
+/* Assuming project cards are .project-card */
+.projects-grid .project-card {
+     /* Initial state defined above */
+     animation: slideInUpFade 0.6s ease-out forwards;
+      /* Add nth-child delays here too if desired */
+}
+
+/* Animate Why Choose Us Items */
+.why-choose-us-item {
+     /* Initial state defined above */
+     animation: slideInUpFade 0.6s ease-out forwards;
+      /* Add nth-child delays here too if desired */
+}
+
+/* Simple CSS staggering for Why Choose Us items */
+.why-choose-us-grid .why-choose-us-item:nth-child(1) { animation-delay: 0.3s; }
+.why-choose-us-grid .why-choose-us-item:nth-child(2) { animation-delay: 0.4s; }
+.why-choose-us-grid .why-choose-us-item:nth-child(3) { animation-delay: 0.5s; }
+.why-choose-us-grid .why-choose-us-item:nth-child(4) { animation-delay: 0.6s; }
+.why-choose-us-grid .why-choose-us-item:nth-child(5) { animation-delay: 0.7s; }
+.why-choose-us-grid .why-choose-us-item:nth-child(6) { animation-delay: 0.8s; }
+
+
+/* Animate Testimonial Cards */
+.testimonial-card {
+     /* Initial state defined above */
+     animation: slideInUpFade 0.6s ease-out forwards;
+      /* Add nth-child delays here too if desired */
+}
+
+
+/* Animate Contact Info and Form side-by-side */
+.contact-info {
+    /* Initial state (opacity: 0, transform: translateX(-20px)) defined above */
+    animation: slideInLeftFade 0.8s ease-out forwards;
+    animation-delay: 0.4s; /* Delay after section title/subtitle */
+}
+
+.contact-form {
+    /* Initial state (opacity: 0, transform: translateX(20px)) defined above */
+     animation: slideInRightFade 0.8s ease-out forwards;
+     animation-delay: 0.5s; /* Delay after contact info starts */
+}
+
+
+/* Animate Newsletter Content */
+.newsletter-content {
+    /* Initial state (opacity: 0, transform: translateY(20px)) defined above */
+    animation: slideInUpFade 0.8s ease-out forwards;
+    animation-delay: 0.4s; /* Delay after section title/subtitle */
+}
+
+/* Animate CTA Content */
+.cta-content {
+     /* Initial state (opacity: 0, transform: translateY(20px)) defined above */
+     animation: slideInUpFade 0.8s ease-out forwards;
+     animation-delay: 0.4s; /* Delay after section content loads */
+}
+
+/* Animate Location Section Content */
+/* If you are using AOS, remove these specific animation styles below and rely on data-aos="fade-up" */
+
+/* Animate location text and map */
+.location-section p:not(.location-address),
+.location-map,
+.location-address {
+     opacity: 0; /* Initial state */
+     transform: translateY(20px); /* Start slightly below */
+     animation: slideInUpFade 0.8s ease-out forwards;
+}
+
+.location-section p:not(.location-address) { animation-delay: 0.4s; } /* Delay after section title/subtitle */
+.location-map { animation-delay: 0.5s; } /* Delay after intro text */
+.location-address { animation-delay: 0.6s; } /* Delay after map */
+
+
+/* Animate Footer Sections */
+.main-footer .footer-section {
+     opacity: 0;
+     transform: translateY(20px);
+     animation: slideInUpFade 0.8s ease-out forwards;
+}
+
+/* Stagger footer sections */
+.main-footer .footer-section:nth-child(1) { animation-delay: 0.3s; }
+.main-footer .footer-section:nth-child(2) { animation-delay: 0.4s; }
+.main-footer .footer-section:nth-child(3) { animation-delay: 0.5s; }
+.main-footer .footer-section:nth-child(4) { animation-delay: 0.6s; } /* If you have 4 sections */
+
+
+/* Animate the footer bottom */
+.main-footer .footer-bottom {
+     opacity: 0;
+     transform: translateY(20px);
+     animation: slideInUpFade 0.8s ease-out forwards;
+     animation-delay: 0.7s; /* Delay after last footer section */
+}
+
+
+/* Ensure elements are initially hidden before animation starts if they are not already */
+/* Apply opacity: 0 to main content sections if they aren't already handled by their inner elements */
+/*
+main .container section:not(#hero):not(.top-bar):not(.navbar) {
+    opacity: 0; // Make non-hero sections initially invisible
+}
+*/
+/* This is better handled by applying opacity: 0 to the specific elements being animated */
+
+
+/* Reset opacity/transform for elements not explicitly animated if needed */
+/* For elements that are NOT targets of the animations */
+/*
+body *:not([class*="animated"]):not([class*="slide"]):not([class*="fade"]):not([data-aos]) {
+    opacity: 1 !important; // Ensure non-animated elements are visible
+    transform: none !important; // Ensure non-animated elements are not translated
+    animation: none !important; // Prevent non-animated elements from animating
+    animation-delay: 0ms !important; // Prevent non-animated elements from inheriting delay
+}
+*/
+
+/* More targeted reset for elements within animated containers but not animated themselves */
+.service-card > a > *, /* Target icon, h3, p inside the service link */
+.project-card > *,
+.why-choose-us-item > *,
+.cta-content > *,
+.newsletter-content > *,
+.contact-info > *:not(.social-icons), /* Exclude social icons if they have separate animations */
+.contact-social a i, .contact-social a {
+    opacity: 1 !important; /* Ensure children of animated elements are visible */
+    transform: none !important; /* Ensure children are not translated weirdly */
+    animation: none !important; /* Prevent children from inheriting animation */
+    animation-delay: 0ms !important; /* Prevent children from inheriting delay */
+}
+
+/* Specific animation for Section Titles and Subtitles if you want them animated on page load */
+/*
+.section-title {
+     opacity: 0; transform: translateY(20px); // Initial state if not already covered
+     animation: slideInUpFade 0.8s ease-out forwards;
+     animation-delay: 0.2s;
+}
+.section-subtitle {
+     opacity: 0; transform: translateY(20px); // Initial state
+     animation: slideInUpFade 0.8s ease-out forwards;
+     animation-delay: 0.3s;
+}
+*/
+
+
+/* ========================================================== */
+/* RESPONSIVE STYLES (Including Top Bar responsiveness) */
+/* ========================================================== */
+
+/* ... (Keep all your existing responsive media queries here) ... */
+/* The refined top bar responsive styles are already integrated below */
+
+@media (max-width: 992px) {
+    /* ...all CSS rules within this block... */
+}
+
+@media (max-width: 768px) {
+    /* ...all CSS rules within this block... */
+}
+
+@media (max-width: 576px) {
+    /* ...all CSS rules within this block... */
+}
+
+@media (max-width: 992px) {
+    .top-container {
+        flex-direction: column; /* Stack the three main blocks */
+        align-items: center; /* Center blocks */
+        gap: 20px; /* Space between stacked blocks */
+        text-align: center; /* Center text within blocks */
+    }
+
+    .left-side {
+        width: 100%; /* Allow logo/tagline to take width */
+        justify-content: center; /* Center logo and tagline */
+    }
+
+    .middle-info {
+         width: 100%; /* Allow contact info block to take width */
+         flex-direction: row; /* Layout individual contact items horizontally again */
+         justify-content: center; /* Center the contact items */
+         gap: 20px; /* Adjusted space between contact items when horizontal */
+    }
+
+    /* Reset individual contact item layout when horizontal */
+     .middle-info div {
+         flex-direction: row; /* Lay out icon, span, strong horizontally */
+         align-items: center; /* Vertically center icon and text */
+         gap: 8px; /* Space between icon/span/strong */
+     }
+
+      .middle-info strong {
+          display: inline; /* Display strong text inline again */
+      }
+
+
+    .social-icons {
+        width: 100%; /* Allow social icons block to take width */
+        justify-content: center; /* Center the social icons */
+        gap: 15px; /* Space between icons */
+    }
+
+    /* General responsiveness for other sections */
+     .section-title {
+         font-size: 30px;
+     }
+
+     .section-subtitle {
+         font-size: 16px;
+     }
+
+    .hero-content h1 {
+        font-size: 40px;
+    }
+
+    .hero-content p {
+        font-size: 18px;
+    }
+
+     .hero-buttons {
+         flex-direction: column;
+         gap: 15px;
+     }
+
+     .hero-buttons .btn {
+         margin: 0;
+         width: 80%;
+         max-width: 300px;
+     }
+
+    .services-grid,
+    .projects-grid,
+    .why-choose-us-grid,
+    .testimonials {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+     .testimonial-card {
+         width: 250px;
+         padding: 25px;
+     }
+
+
+    .cta-content h2 {
+        font-size: 30px;
+    }
+
+    .cta-content p {
+        font-size: 16px;
+    }
+
+     .newsletter-form {
+         flex-direction: column;
+         align-items: center;
+     }
+
+    .newsletter-form input[type="email"],
+    .newsletter-form button {
+        width: 80%;
+        max-width: 300px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+     .footer-section {
+         width: 100%;
+         text-align: center;
+     }
+
+      .footer-about .footer-logo {
+         margin-left: auto;
+         margin-right: auto;
+      }
+
+
+    .footer-section ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px 20px;
+    }
+
+    .footer-section ul li {
+         margin-bottom: 0;
+    }
+
+     .footer-contact i {
+         margin-right: 5px;
+     }
+
+    .footer-social a {
+        margin: 0 10px;
+    }
+
+}
+
+@media (max-width: 768px) {
+     /* Further adjustments for tablets and smaller */
+     .top-bar {
+         padding: 15px 0;
+     }
+
+     .logo {
+         height: 45px; /* Adjust size for smaller tablets */
+     }
+
+      .tagline {
+          font-size: 15px;
+      }
+
+      .middle-info {
+          font-size: 12px;
+          gap: 15px;
+      }
+
+       .middle-info i {
+           font-size: 17px;
+       }
+
+       .middle-info span {
+           font-size: 11px;
+       }
+
+       .middle-info strong {
+           font-size: 13px;
+       }
+
+     .social-icons a {
+         font-size: 18px;
+         gap: 12px;
+     }
+
+      /* Adjust grid columns for smaller tablets */
+     .services-grid,
+     .projects-grid,
+     .why-choose-us-grid,
+     .testimonials {
+         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+         gap: 15px;
+     }
+
+}
+
+
+@media (max-width: 576px) {
+    /* Adjustments for smaller mobile screens */
+     .top-bar {
+         padding: 12px 0;
+     }
+
+     .logo {
+         height: 40px; /* Adjust size for mobile */
+     }
+
+      .tagline {
+          font-size: 14px;
+      }
+
+      .middle-info {
+          /* When individual contact items wrap vertically again */
+          flex-direction: column; /* Stack individual contact items */
+          gap: 12px; /* Space between stacked contact items */
+          font-size: 13px;
+      }
+
+       .middle-info div {
+           flex-direction: row; /* Revert back to row within the stacked item */
+           align-items: center;
+           gap: 8px;
+           justify-content: center; /* Center content within the flex row */
+       }
+
+       .middle-info strong {
+            display: inline; /* Keep inline if space allows */
+            margin-left: 5px;
+       }
+
+        /* Force address onto two lines and center */
+       .middle-info div:last-child {
+           flex-direction: column; /* Force address to stack */
+           align-items: center;
+       }
+        .middle-info div:last-child strong {
+             display: block; /* Force second line */
+             margin-left: 0;
+             text-align: center; /* Center address text */
+        }
+         .middle-info div:last-child span {
+             text-align: center; /* Center address text */
+         }
+          .middle-info div:last-child i {
+              margin-bottom: 5px; /* Space below icon */
+          }
+
+
+      .social-icons a {
+          font-size: 17px;
+          gap: 10px;
+      }
+
+       /* Further adjust grid columns for mobile */
+      .services-grid,
+      .projects-grid,
+      .why-choose-us-grid,
+      .testimonials {
+          grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+          gap: 10px;
+      }
+
+       .testimonial-card {
+           width: 180px;
+           padding: 15px;
+           font-size: 14px;
+       }
+
+       .client-photo {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 10px;
+       }
+
+       .newsletter-form input[type="email"],
+       .newsletter-form button {
+           width: 90%;
+           max-width: none;
+       }
+
+       .contact-info,
+       .contact-form {
+            min-width: 100%; /* Ensure they take full width when stacked */
+       }
+
+       .contact-info .section-title,
+       .contact-form .form-title {
+           text-align: center; /* Center contact titles on small screens */
+       }
+
+        .contact-info .section-title::after {
+             margin: 10px auto 0; /* Center underline */
+        }
+
+       .contact-details div {
+           justify-content: center; /* Center contact details list */
+       }
+
+        .contact-social {
+             text-align: center; /* Center contact social links */
+        }
+
+}
