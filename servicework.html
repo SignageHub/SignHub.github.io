@@ -4,8 +4,10 @@
   <link rel="icon" type="image/png" href="gallery/signage hub logo 2-1.png">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Our Services - Signage Hub</title> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  <link rel="stylesheet" href="index.css" /> <style>
+  <title>Our Services - Signage Hub</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="index.css" />
+  <style>
       /* Add any specific CSS for servicework.html here */
       /* For example, padding for sections to prevent sticky header overlap */
       .service-detail-section {
@@ -45,10 +47,10 @@
 
         .service-images {
             flex: 1; /* Images take less space */
-             min-width: 250px;
-             text-align: center;
-             /* Optional: Add padding/margin if images container needs it */
-             /* padding: 10px; */
+            min-width: 250px;
+            text-align: center;
+            /* Optional: Add padding/margin if images container needs it */
+            /* padding: 10px; */
         }
 
         .service-images img {
@@ -74,15 +76,15 @@
             border: 1px solid #ddd; /* Light gray border */
             padding: 12px; /* Padding inside cells */
             text-align: left; /* Align text left */
-             vertical-align: top; /* Align cell content to the top */
+            vertical-align: top; /* Align cell content to the top */
         }
 
         .service-detail-section th {
             background-color: #f2f2f2; /* Light gray background for headers */
             font-weight: bold;
             color: #333;
-             text-transform: uppercase; /* Uppercase headers */
-             font-size: 14px;
+            text-transform: uppercase; /* Uppercase headers */
+            font-size: 14px;
         }
 
         .service-detail-section tbody tr:nth-child(even) {
@@ -91,7 +93,7 @@
 
          .service-detail-section tbody tr:hover {
             background-color: #e9e9e9; /* Highlight row on hover */
-         }
+          }
 
         /* Style for the image within the table cell */
         .service-detail-section td img {
@@ -105,79 +107,93 @@
 
 
         /* Optional: Style for table caption or heading */
-         .service-detail-section h4 {
-             margin-top: 0;
-             margin-bottom: 15px;
-             font-size: 20px;
-             color: #333;
-         }
+          .service-detail-section h4 {
+              margin-top: 0;
+              margin-bottom: 15px;
+              font-size: 20px;
+              color: #333;
+          }
 
-         /* Responsive adjustments for table */
-         @media (max-width: 768px) {
-             /* Hide table headers and display them as data attributes */
-             .service-detail-section table,
-             .service-detail-section thead,
-             .service-detail-section tbody,
-             .service-detail-section th,
-             .service-detail-section td,
-             .service-detail-section tr {
-                 display: block;
-             }
+          /* Responsive adjustments for table */
+          @media (max-width: 768px) {
+              /* Hide table headers and display them as data attributes */
+              .service-detail-section table,
+              .service-detail-section thead,
+              .service-detail-section tbody,
+              .service-detail-section th,
+              .service-detail-section td,
+              .service-detail-section tr {
+                  display: block;
+              }
 
-             .service-detail-section thead tr {
-                 position: absolute;
-                 top: -9999px;
-                 left: -9999px;
-             }
+              .service-detail-section thead tr {
+                  position: absolute;
+                  top: -9999px;
+                  left: -9999px;
+              }
 
-             .service-detail-section tr {
-                 border: 1px solid #ccc;
-                 margin-bottom: 10px;
-                 border-radius: 8px;
-                 overflow: hidden;
-             }
+              .service-detail-section tr {
+                  border: 1px solid #ccc;
+                  margin-bottom: 10px;
+                  border-radius: 8px;
+                  overflow: hidden;
+              }
 
-             .service-detail-section td {
-                 border: none;
-                 border-bottom: 1px solid #eee;
-                 position: relative;
-                 padding-left: 50%; /* Space for the pseudo-element label */
-                 text-align: right; /* Align data to the right */
-             }
+              .service-detail-section td {
+                  border: none;
+                  border-bottom: 1px solid #eee;
+                  position: relative;
+                  padding-left: 50%; /* Space for the pseudo-element label */
+                  text-align: right; /* Align data to the right */
+              }
 
               /* Use data attributes to show header labels before data */
-             .service-detail-section td::before {
-                 content: attr(data-label);
-                 position: absolute;
-                 left: 10px;
-                 width: 45%; /* Width for the label */
-                 padding-right: 10px;
-                 white-space: nowrap;
-                 font-weight: bold;
-                 text-align: left; /* Align label to the left */
-                 color: #555;
-             }
+              .service-detail-section td::before {
+                  content: attr(data-label);
+                  position: absolute;
+                  left: 10px;
+                  width: 45%; /* Width for the label */
+                  padding-right: 10px;
+                  white-space: nowrap;
+                  font-weight: bold;
+                  text-align: left; /* Align label to the left */
+                  color: #555;
+              }
 
-             /* Adjustments for the Image column */
-             .service-detail-section td[data-label="Image"] {
-                  text-align: center; /* Center image cell content */
-                  padding-left: 10px; /* Remove left padding override */
-             }
+              /* Adjustments for the Image column */
+              .service-detail-section td[data-label="Image"] {
+                   text-align: center; /* Center image cell content */
+                   padding-left: 10px; /* Remove left padding override */
+              }
 
-              .service-detail-section td[data-label="Image"]::before {
-                  content: ""; /* Hide label for the image cell */
-             }
+               .service-detail-section td[data-label="Image"]::before {
+                   content: ""; /* Hide label for the image cell */
+               }
 
-             .service-detail-section td img {
-                 max-width: 100px; /* Allow slightly larger images on small screens */
-                 margin: 10px auto; /* Center the image */
-                 display: inline-block; /* Display as inline-block for centering */
-             }
+              .service-detail-section td img {
+                   max-width: 100px; /* Allow slightly larger images on small screens */
+                   margin: 10px auto; /* Center the image */
+                   display: inline-block; /* Display as inline-block for centering */
+              }
+          }
 
-         }
+      /* Style for the new "Get a Quote" button */
+      .get-quote-service-btn {
+          display: inline-block;
+          background-color: #007bff; /* Primary blue color */
+          color: #fff;
+          padding: 10px 20px;
+          border-radius: 5px;
+          text-decoration: none;
+          font-weight: bold;
+          transition: background-color 0.3s ease;
+          margin-top: 20px; /* Space above the button */
+      }
 
-
-   </style>
+      .get-quote-service-btn:hover {
+          background-color: #0056b3; /* Darker blue on hover */
+      }
+    </style>
 </head>
 <body>
 
@@ -188,8 +204,8 @@
         <span class="tagline">Signage Hub</span>
       </div>
       <div class="middle-info">
-        <div><i class="fas fa-phone-alt"></i> <span>Call anytime</span><br><strong>(+256) 414–287–631</strong></div>
-        <div><i class="fas fa-envelope"></i> <span>Send email</span><br><strong>info@globalpaints.co.ug</strong></div>
+        <div><i class="fas fa-phone-alt"></i> <span>Call anytime</span><br><strong><a href="tel:+256705498743">(+256)705–498–743</a></strong></div>
+        <div><i class="fas fa-envelope"></i> <span>Send email</span><br><strong><a href="mailto:nyolastanley70@gmail.com">nyolastanley70@gmail.com</a></strong></div>
         <div><i class="fas fa-map-marker-alt"></i><span>Plot 3082, Block 236, Namanye</span><br><strong>North Road, Wakiso, Uganda</strong></div>
       </div>
       <div class="social-icons">
@@ -203,10 +219,15 @@
   <nav class="navbar">
     <div class="nav-container">
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li> <li><a href="index.html#about">About</a></li> <li><a href="#services-overview">Services</a></li> <li><a href="index.html#projects">Latest Projects</a></li> <li><a href="index.html#contact">Contact</a></li> </ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="#services-overview">Services</a></li>
+        <li><a href="index.html#projects">Latest Projects</a></li>
+        <li><a href="index.html#location">Location</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
       <div class="right-nav">
-        <i class="fas fa-search"></i>
-        <button class="book-btn">Get a Free Quote</button>
+        <button class="book-btn" onclick="location.href='index.html#contact'">Get a Free Quote</button>
       </div>
     </div>
   </nav>
@@ -223,12 +244,13 @@
       <div class="service-content">
           <div class="service-text">
               <h2>3D Signs</h2>
-              <p>Detailed description of 3D signs goes here. Talk about materials (acrylic, metal, foam), lighting options (face-lit, halo-lit), applications (building exteriors, reception areas), and the impact they create.</p>
-              <p>Explain the design process, manufacturing techniques, and installation services for 3D lettering and logos.</p>
-               </div>
+              <p>Eye-catching dimensional signs that make your brand stand out with depth and impact. We use a variety of materials like acrylic, metal, and foam, offering options for internal (face-lit) or external (halo-lit) lighting to achieve stunning visual effects. Ideal for building exteriors, reception areas, and retail environments, 3D signs elevate your brand's presence.</p>
+              <p>Our process includes custom design, precision manufacturing using advanced techniques, and professional installation to ensure your 3D lettering and logos are perfectly realized and securely mounted.</p>
+              <a href="index.html#contact" class="get-quote-service-btn" data-service-name="3D Signs">Get a Quote for 3D Signs</a>
+          </div>
           <div class="service-images">
               <img src="gallery/3d-signs-example1.jpg" alt="Example of 3D Sign">
-               </div>
+          </div>
       </div>
       <h4>Recent 3D Sign Projects</h4>
       <table>
@@ -253,7 +275,7 @@
             <td data-label="Location">Wakiso, Tech Park</td>
             <td data-label="Cost">UGX [Cost]</td>
           </tr>
-           </tbody>
+        </tbody>
       </table>
     </section>
 
@@ -261,50 +283,52 @@
         <div class="service-content">
             <div class="service-images">
                 <img src="gallery/2d-signs-example1.jpg" alt="Example of 2D Wall Sign">
-                 </div>
+            </div>
             <div class="service-text">
                 <h2>2D Wall Signs</h2>
-                <p>Detailed description of 2D wall signs, including flat panels, vinyl graphics, printed signs, and other non-dimensional options. Mention different materials like PVC, aluminum composite panels, etc.</p>
-                <p>Discuss design, printing quality, and installation methods for various indoor and outdoor flat signage.</p>
-                 </div>
+                <p>Our 2D wall signs include flat panels, vibrant vinyl graphics, and custom printed signs, offering a versatile range of non-dimensional signage options. We utilize various materials such as durable PVC and sleek aluminum composite panels, ensuring a perfect fit for both indoor and outdoor applications.</p>
+                <p>From initial design concepts to high-quality printing and flawless installation, we ensure your flat signage effectively communicates your message, whether it's for storefronts, offices, or promotional displays.</p>
+                <a href="index.html#contact" class="get-quote-service-btn" data-service-name="2D Wall Signs">Get a Quote for 2D Wall Signs</a>
+            </div>
         </div>
-         <h4>Recent 2D Wall Sign Projects</h4>
-         <table>
-           <thead>
-             <tr>
-               <th>Image</th> <th>Project Name</th>
-               <th>Size</th>
-               <th>Location</th>
-               <th>Cost</th>
-             </tr>
-           </thead>
-           <tbody>
-             <tr>
-               <td data-label="Image"><img src="gallery/projects/2d-coffeeshop.jpg" alt="Coffee Shop Menu Board Project"></td> <td data-label="Project Name">Coffee Shop Menu Board</td>
-               <td data-label="Size">1.5m x 1m</td>
-               <td data-label="Location">Entebbe, Town</td>
-               <td data-label="Cost">UGX [Cost]</td>
-             </tr>
-             <tr>
-                <td data-label="Image"><img src="gallery/projects/2d-retailwindow.jpg" alt="Retail Store Window Vinyl Project"></td> <td data-label="Project Name">Retail Store Window Vinyl</td>
-               <td data-label="Size">3m x 1.8m (total)</td>
-               <td data-label="Location">Jinja, Market Area</td>
-               <td data-label="Cost">UGX [Cost]</td>
-             </tr>
-           </tbody>
-         </table>
+        <h4>Recent 2D Wall Sign Projects</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>Image</th> <th>Project Name</th>
+              <th>Size</th>
+              <th>Location</th>
+              <th>Cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label="Image"><img src="gallery/projects/2d-coffeeshop.jpg" alt="Coffee Shop Menu Board Project"></td> <td data-label="Project Name">Coffee Shop Menu Board</td>
+              <td data-label="Size">1.5m x 1m</td>
+              <td data-label="Location">Entebbe, Town</td>
+              <td data-label="Cost">UGX [Cost]</td>
+            </tr>
+            <tr>
+              <td data-label="Image"><img src="gallery/projects/2d-retailwindow.jpg" alt="Retail Store Window Vinyl Project"></td> <td data-label="Project Name">Retail Store Window Vinyl</td>
+              <td data-label="Size">3m x 1.8m (total)</td>
+              <td data-label="Location">Jinja, Market Area</td>
+              <td data-label="Cost">UGX [Cost]</td>
+            </tr>
+          </tbody>
+        </table>
     </section>
 
     <section id="pylon-signs" class="service-detail-section">
         <div class="service-content">
             <div class="service-text">
                 <h2>Pylon Signs</h2>
-                <p>Detailed information about pylon signs (also called pole signs or monument signs). Explain their purpose for high visibility, ideal locations (roadsides, parking lots), and construction details.</p>
-                <p>Mention custom shapes, sizes, materials, lighting options, and the process from design to ground installation.</p>
-                 </div>
+                <p>Pylon signs, also known as pole signs or monument signs, are tall, freestanding structures designed for maximum visibility. They are ideal for businesses located in shopping centers, industrial parks, or along busy roads, acting as prominent landmarks.</p>
+                <p>We offer custom shapes, various sizes, durable materials, and integrated lighting options. Our comprehensive service covers everything from design to professional ground installation, ensuring your pylon sign effectively draws attention to your location.</p>
+                <a href="index.html#contact" class="get-quote-service-btn" data-service-name="Pylon Signs">Get a Quote for Pylon Signs</a>
+            </div>
             <div class="service-images">
-                 <img src="gallery/pylon-signs-example1.jpg" alt="Example of Pylon Sign">
-                  </div>
+                <img src="gallery/pylon-signs-example1.jpg" alt="Example of Pylon Sign">
+            </div>
         </div>
         <h4>Recent Pylon Sign Projects</h4>
         <table>
@@ -318,13 +342,13 @@
           </thead>
           <tbody>
             <tr>
-               <td data-label="Image"><img src="gallery/projects/pylon-mallen.jpg" alt="Mall Entrance Pylon Sign Project"></td> <td data-label="Project Name">Mall Entrance Sign</td>
+              <td data-label="Image"><img src="gallery/projects/pylon-mallen.jpg" alt="Mall Entrance Pylon Sign Project"></td> <td data-label="Project Name">Mall Entrance Sign</td>
               <td data-label="Size">8m Tall</td>
               <td data-label="Location">Kampala, Acacia Ave</td>
               <td data-label="Cost">UGX [Cost]</td>
             </tr>
             <tr>
-               <td data-label="Image"><img src="gallery/projects/pylon-industrial.jpg" alt="Industrial Park Pylon Sign Project"></td> <td data-label="Project Name">Industrial Park Directory</td>
+              <td data-label="Image"><img src="gallery/projects/pylon-industrial.jpg" alt="Industrial Park Pylon Sign Project"></td> <td data-label="Project Name">Industrial Park Directory</td>
               <td data-label="Size">6m Tall</td>
               <td data-label="Location">Namanve, Industrial Area</td>
               <td data-label="Cost">UGX [Cost]</td>
@@ -336,14 +360,15 @@
     <section id="banner-lightbox-signs" class="service-detail-section">
         <div class="service-content">
             <div class="service-images">
-                 <img src="gallery/banner-example1.jpg" alt="Example of Banner Sign">
-                 <img src="gallery/lightbox-example1.jpg" alt="Example of Light Box Sign">
+                <img src="gallery/banner-example1.jpg" alt="Example of Banner Sign">
+                <img src="gallery/lightbox-example1.jpg" alt="Example of Light Box Sign">
             </div>
             <div class="service-text">
                 <h2>Banner & Light Box Signs</h2>
-                <p>Detailed description covering two related services: Flexible banners for temporary or portable signage, and illuminated light box signs for consistent visibility with internal lighting.</p>
-                <p>Discuss materials, printing quality, sizes, and applications for both banners and light boxes.</p>
-                 </div>
+                <p>We provide flexible and portable **banners** perfect for events, promotions, or temporary signage needs, offering high-quality printing on durable materials. Alongside, our **light box signs** provide consistent visibility with internal illumination, ensuring your message stands out day and night.</p>
+                <p>We work with you to choose the right materials, ensure superior printing quality, and offer custom sizes for both banners and light boxes, making them ideal for a variety of advertising and branding applications.</p>
+                <a href="index.html#contact" class="get-quote-service-btn" data-service-name="Banner & Light Box Signs">Get a Quote for Banners & Light Boxes</a>
+            </div>
         </div>
         <h4>Recent Banner & Light Box Projects</h4>
         <table>
@@ -357,13 +382,13 @@
           </thead>
           <tbody>
             <tr>
-               <td data-label="Image"><img src="gallery/projects/banner-event.jpg" alt="Event Promotion Banner Project"></td> <td data-label="Project Name">Event Promotion Banner</td>
+              <td data-label="Image"><img src="gallery/projects/banner-event.jpg" alt="Event Promotion Banner Project"></td> <td data-label="Project Name">Event Promotion Banner</td>
               <td data-label="Size">3m x 1.2m</td>
               <td data-label="Location">Kololo, Event Space</td>
               <td data-label="Cost">UGX [Cost]</td>
             </tr>
             <tr>
-               <td data-label="Image"><img src="gallery/projects/lightbox-shop.jpg" alt="Shopfront Light Box Project"></td> <td data-label="Project Name">Shopfront Light Box</td>
+              <td data-label="Image"><img src="gallery/projects/lightbox-shop.jpg" alt="Shopfront Light Box Project"></td> <td data-label="Project Name">Shopfront Light Box</td>
               <td data-label="Size">2.5m x 0.6m</td>
               <td data-label="Location">Bugolobi, Retail Center</td>
               <td data-label="Cost">UGX [Cost]</td>
@@ -375,12 +400,14 @@
     <section id="wall-stickers" class="service-detail-section">
        <div class="service-content">
            <div class="service-text">
-               <h2>Wall Stickers & Graphics</h2> <p>Detailed information on wall stickers, vinyl graphics, wall wraps, and custom murals. Explain how they can transform interior spaces for branding, decoration, or information.</p>
-               <p>Discuss materials, printing techniques, custom designs, and professional installation on various wall surfaces.</p>
-                </div>
+               <h2>Wall Stickers & Graphics</h2>
+               <p>Transform your interior spaces with our custom wall stickers, vinyl graphics, full wall wraps, and artistic murals. These solutions are perfect for enhancing brand visibility, adding decorative elements, or displaying informational graphics within offices, retail stores, restaurants, or homes.</p>
+               <p>We offer a wide range of materials, high-quality printing techniques, and bespoke designs tailored to your specific needs. Our professional team ensures precise application on various wall surfaces for a smooth, bubble-free finish.</p>
+               <a href="index.html#contact" class="get-quote-service-btn" data-service-name="Wall Stickers">Get a Quote for Wall Stickers</a>
+           </div>
            <div class="service-images">
                 <img src="gallery/wall-sticker-example1.jpg" alt="Example of Wall Sticker">
-                 </div>
+            </div>
        </div>
        <h4>Recent Wall Sticker Projects</h4>
        <table>
@@ -394,13 +421,13 @@
          </thead>
          <tbody>
            <tr>
-              <td data-label="Image"><img src="gallery/projects/wallsticker-office.jpg" alt="Office Feature Wall Graphic Project"></td> <td data-label="Project Name">Office Feature Wall Graphic</td>
+             <td data-label="Image"><img src="gallery/projects/wallsticker-office.jpg" alt="Office Feature Wall Graphic Project"></td> <td data-label="Project Name">Office Feature Wall Graphic</td>
              <td data-label="Size">5m x 2.5m</td>
              <td data-label="Location">Nakawa, Business Park</td>
              <td data-label="Cost">UGX [Cost]</td>
            </tr>
            <tr>
-              <td data-label="Image"><img src="gallery/projects/wallsticker-kids.jpg" alt="Kids Play Area Mural Project"></td> <td data-label="Project Name">Kids Play Area Mural</td>
+             <td data-label="Image"><img src="gallery/projects/wallsticker-kids.jpg" alt="Kids Play Area Mural Project"></td> <td data-label="Project Name">Kids Play Area Mural</td>
              <td data-label="Size">4m x 3m</td>
              <td data-label="Location">Ntinda, Residential</td>
              <td data-label="Cost">UGX [Cost]</td>
@@ -412,13 +439,14 @@
     <section id="neon-led-signs" class="service-detail-section">
         <div class="service-content">
             <div class="service-images">
-                 <img src="gallery/neon-led-example1.jpg" alt="Example of Neon/LED Sign">
-                  </div>
+                <img src="gallery/neon-led-example1.jpg" alt="Example of Neon/LED Sign">
+            </div>
             <div class="service-text">
                 <h2>Neon & LED Signs</h2>
-                <p>Detailed description covering both traditional neon and modern LED illuminated signs. Explain the advantages of each (e.g., classic look vs. energy efficiency, versatility).</p>
-                <p>Discuss custom shapes, colors, brightness, indoor/outdoor use, and installation services for illuminated signage.</p>
-                 </div>
+                <p>Illuminate your brand with our custom **Neon and LED signs**. We offer both classic neon for a vintage aesthetic and modern, energy-efficient LED options for vibrant, long-lasting illumination. LED signs provide versatility in color and brightness, making them ideal for dynamic displays.</p>
+                <p>From custom shapes and rich colors to tailored brightness levels, our illuminated signs are designed for both indoor and outdoor use. We provide comprehensive services from design to professional installation, ensuring your sign attracts maximum attention.</p>
+                <a href="index.html#contact" class="get-quote-service-btn" data-service-name="Neon & LED Signs">Get a Quote for Neon & LED Signs</a>
+            </div>
         </div>
         <h4>Recent Neon & LED Sign Projects</h4>
         <table>
@@ -432,13 +460,13 @@
           </thead>
           <tbody>
             <tr>
-               <td data-label="Image"><img src="gallery/projects/neonled-restaurant.jpg" alt="Restaurant LED Neon Sign Project"></td> <td data-label="Project Name">Restaurant Open Sign (LED Neon)</td>
+              <td data-label="Image"><img src="gallery/projects/neonled-restaurant.jpg" alt="Restaurant LED Neon Sign Project"></td> <td data-label="Project Name">Restaurant Open Sign (LED Neon)</td>
               <td data-label="Size">1m x 0.4m</td>
               <td data-label="Location">Muyenga, Hill</td>
               <td data-label="Cost">UGX [Cost]</td>
             </tr>
             <tr>
-               <td data-label="Image"><img src="gallery/projects/neonled-bar.jpg" alt="Bar Classic Neon Sign Project"></td> <td data-label="Project Name">Bar Logo Sign (Classic Neon)</td>
+              <td data-label="Image"><img src="gallery/projects/neonled-bar.jpg" alt="Bar Classic Neon Sign Project"></td> <td data-label="Project Name">Bar Logo Sign (Classic Neon)</td>
               <td data-label="Size">0.8m x 0.8m</td>
               <td data-label="Location">Kisementi, Entertainment Area</td>
               <td data-label="Cost">UGX [Cost]</td>
@@ -451,12 +479,13 @@
         <div class="service-content">
             <div class="service-text">
                 <h2>Vehicle Branding</h2>
-                <p>Detailed information on vehicle wraps, vinyl lettering, and graphics for cars, trucks, vans, and other vehicles. Explain how vehicle branding serves as mobile advertising.</p>
-                <p>Discuss full wraps vs. partial wraps, design services, material durability, and professional application and removal.</p>
-                 </div>
+                <p>Turn your company vehicles into powerful mobile billboards with our expert vehicle branding services. We offer high-quality vinyl wraps, precise lettering, and eye-catching graphics for cars, trucks, vans, and even motorcycles. Vehicle branding provides continuous, cost-effective advertising wherever your fleet goes.</p>
+                <p>Whether you need a full wrap to completely transform your vehicle or partial graphics to highlight key branding, our services include professional design, durable material selection, and expert application for a seamless finish. We also handle removal services when needed.</p>
+                <a href="index.html#contact" class="get-quote-service-btn" data-service-name="Vehicle Branding">Get a Quote for Vehicle Branding</a>
+            </div>
             <div class="service-images">
-                 <img src="gallery/vehicle-branding-example1.jpg" alt="Example of Vehicle Wrap">
-                  </div>
+                <img src="gallery/vehicle-branding-example1.jpg" alt="Example of Vehicle Wrap">
+            </div>
         </div>
         <h4>Recent Vehicle Branding Projects</h4>
         <table>
@@ -470,13 +499,13 @@
           </thead>
           <tbody>
             <tr>
-               <td data-label="Image"><img src="gallery/projects/vehicle-delivery.jpg" alt="Delivery Van Wrap Project"></td> <td data-label="Project Name">Delivery Van Full Wrap</td>
+              <td data-label="Image"><img src="gallery/projects/vehicle-delivery.jpg" alt="Delivery Van Wrap Project"></td> <td data-label="Project Name">Delivery Van Full Wrap</td>
               <td data-label="Size">Large Van</td>
               <td data-label="Location">Serving Kampala & Suburbs</td>
               <td data-label="Cost">UGX [Cost]</td>
             </tr>
             <tr>
-               <td data-label="Image"><img src="gallery/projects/vehicle-car.jpg" alt="Company Car Graphics Project"></td> <td data-label="Project Name">Company Car Graphics</td>
+              <td data-label="Image"><img src="gallery/projects/vehicle-car.jpg" alt="Company Car Graphics Project"></td> <td data-label="Project Name">Company Car Graphics</td>
               <td data-label="Size">Small Sedan</td>
               <td data-label="Location">Kampala, Bukoto</td>
               <td data-label="Cost">UGX [Cost]</td>
@@ -486,78 +515,112 @@
     </section>
 
     <section id="wayfinding-signs" class="service-detail-section">
-         <div class="service-content">
-             <div class="service-images">
-                  <img src="gallery/wayfinding-example1.jpg" alt="Example of Wayfinding Signage">
-                   </div>
-             <div class="service-text">
-                 <h2>Wayfinding Signs</h2>
-                 <p>Detailed description of wayfinding and directional signage systems for businesses, campuses, hospitals, and public spaces. Explain their importance for navigation and visitor experience.</p>
-                 <p>Discuss site assessment, design of sign families, materials (interior and exterior), directories, post & panel signs, and installation.</p>
-                  </div>
-         </div>
-         <h4>Recent Wayfinding Projects</h4>
-         <table>
-           <thead>
-             <tr>
-               <th>Image</th> <th>Project Name</th>
-               <th>Size</th>
-               <th>Location</th>
-               <th>Cost</th>
-             </tr>
-           </thead>
-           <tbody>
-             <tr>
-               <td data-label="Image"><img src="gallery/projects/wayfinding-office.jpg" alt="Office Building Wayfinding Project"></td> <td data-label="Project Name">Office Building Directory & Directionals</td>
-               <td data-label="Size">Various Sizes</td>
-               <td data-label="Location">Kampala, City Center</td>
-               <td data-label="Cost">UGX [Cost]</td>
-             </tr>
-             <tr>
-                <td data-label="Image"><img src="gallery/projects/wayfinding-hospital.jpg" alt="Hospital Interior Wayfinding Project"></td> <td data-label="Project Name">Hospital Interior Wayfinding</td>
-               <td data-label="Size">Various Sizes</td>
-               <td data-label="Location">Mbarara, Western Uganda</td>
-               <td data-label="Cost">UGX [Cost]</td>
-             </tr>
-           </tbody>
-         </table>
+           <div class="service-content">
+               <div class="service-images">
+                   <img src="gallery/wayfinding-example1.jpg" alt="Example of Wayfinding Signage">
+               </div>
+               <div class="service-text">
+                   <h2>Wayfinding Signs</h2>
+                   <p>Ensure seamless navigation for visitors with our comprehensive wayfinding and directional signage systems. Essential for businesses, campuses, hospitals, and large public spaces, these signs improve user experience and reduce confusion.</p>
+                   <p>Our service includes a thorough site assessment, designing cohesive sign families, selecting appropriate materials for interior and exterior use (like directories, post & panel signs), and professional installation. We create intuitive signage that guides people effortlessly through your premises.</p>
+                   <a href="index.html#contact" class="get-quote-service-btn" data-service-name="Wayfinding Signs">Get a Quote for Wayfinding Signs</a>
+               </div>
+           </div>
+           <h4>Recent Wayfinding Projects</h4>
+           <table>
+             <thead>
+               <tr>
+                 <th>Image</th> <th>Project Name</th>
+                 <th>Size</th>
+                 <th>Location</th>
+                 <th>Cost</th>
+               </tr>
+             </thead>
+             <tbody>
+               <tr>
+                 <td data-label="Image"><img src="gallery/projects/wayfinding-office.jpg" alt="Office Building Wayfinding Project"></td> <td data-label="Project Name">Office Building Directory & Directionals</td>
+                 <td data-label="Size">Various Sizes</td>
+                 <td data-label="Location">Kampala, City Center</td>
+                 <td data-label="Cost">UGX [Cost]</td>
+               </tr>
+               <tr>
+                 <td data-label="Image"><img src="gallery/projects/wayfinding-hospital.jpg" alt="Hospital Interior Wayfinding Project"></td> <td data-label="Project Name">Hospital Interior Wayfinding</td>
+                 <td data-label="Size">Various Sizes</td>
+                 <td data-label="Location">Mbarara, Western Uganda</td>
+                 <td data-label="Cost">UGX [Cost]</td>
+               </tr>
+             </tbody>
+           </table>
     </section>
 
 
-  </main> <footer class="main-footer">
+  </main>
+  <footer class="main-footer">
     <div class="container footer-content">
       <div class="footer-section footer-about">
-        <h4>Global Signs</h4>
-        <img src="gallery/signage hub logo 2-1.png" alt="Global Signs Logo" class="footer-logo">
+        <h4>Signage Hub</h4>
+        <img src="gallery/Email headereventgraduation - Made with PosterMyWall.jpg" alt="Signage Hub Logo" class="footer-logo">
         <p>A Reliable Product, dedicated to providing top-quality signage solutions across Uganda.</p>
-         <div class="footer-social social-icons">
-              <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-              <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-         </div>
+        <div class="footer-social social-icons">
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
       </div>
       <div class="footer-section footer-links">
         <h4>Quick Links</h4>
         <ul>
-          <li><a href="index.html">Home</a></li> <li><a href="index.html#about">About Us</a></li> <li><a href="#services-overview">Our Services</a></li> <li><a href="index.html#projects">Latest Projects</a></li> <li><a href="index.html#contact">Contact Us</a></li> </ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">About Us</a></li>
+          <li><a href="#services-overview">Our Services</a></li>
+          <li><a href="index.html#projects">Latest Projects</a></li>
+          <li><a href="index.html#contact">Contact Us</a></li>
+        </ul>
       </div>
       <div class="footer-section footer-contact">
         <h4>Contact Info</h4>
-        <p><i class="fas fa-phone-alt"></i> <strong>Phone:</strong> (+256) 414–287–631</p>
-        <p><i class="fas fa-envelope"></i> <strong>Email:</strong> info@globalpaints.co.ug</p>
+        <p><i class="fas fa-phone-alt"></i> <strong>Phone:</strong> <a href="tel:+256705498743">(+256)705–498–743</a></p>
+        <p><i class="fas fa-envelope"></i> <strong>Email:</strong> <a href="mailto:nyolastanley70@gmail.com">nyolastanley70@gmail.com</a></p>
         <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> Plot 3082, Block 236, Namanye, North Road, Wakiso, Uganda</p>
-         <p><i class="fas fa-clock"></i> <strong>Office Hours:</strong> Mon - Fri: 8:00 AM - 5:00 PM</p>
+        <p><i class="fas fa-clock"></i> <strong>Office Hours:</strong> Mon - Fri: 8:00 AM - 5:00 PM</p>
       </div>
     </div>
     <div class="footer-bottom">
-       <div class="container">
-            <p>&copy; <span id="current-year-sw">2025</span> Global Signs. All rights reserved.</p>
-       </div>
+        <div class="container">
+            <p>© <span id="current-year-sw">2025</span> Signage Hub. All rights reserved.</p>
+        </div>
     </div>
   </footer>
 
-   <script>
-       document.getElementById('current-year-sw').textContent = new Date().getFullYear();
-   </script>
-    </body>
+    <script>
+        document.getElementById('current-year-sw').textContent = new Date().getFullYear();
+
+        // JavaScript to handle "Get a Quote" buttons
+        document.addEventListener('DOMContentLoaded', () => {
+            const getQuoteButtons = document.querySelectorAll('.get-quote-service-btn');
+
+            getQuoteButtons.forEach(button => {
+                button.addEventListener('click', (event) => {
+                    // Prevent default link behavior
+                    event.preventDefault();
+
+                    const serviceName = button.getAttribute('data-service-name');
+                    const message = `Hello Signage Hub, I am interested in your ${serviceName} service. Please tell me more about it or provide a quote.`;
+
+                    // Store these values in localStorage so index.html can retrieve them
+                    localStorage.setItem('prefillService', serviceName);
+                    localStorage.setItem('prefillMessage', message);
+
+                    // Redirect to the contact section of index.html
+                    window.location.href = 'index.html#contact';
+                });
+            });
+
+            // This part runs on index.html (when redirected) to prefill the form
+            // However, this script is in servicework.html, so it won't directly prefill index.html
+            // We need a script in index.html to read these localStorage values.
+            // I'll remind you about this important step.
+        });
+    </script>
+</body>
 </html>
