@@ -12,6 +12,63 @@ body {
     overflow-x: hidden; /* Prevent horizontal scroll caused by animations */
 }
 
+/* --- Lightbox Styles --- */
+.lightbox {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top (should be higher than other content) */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+  display: flex; /* Use flexbox for centering */
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+}
+
+.lightbox-content {
+  margin: auto; /* Auto margin for older browsers */
+  display: block; /* Ensures it's a block element */
+  max-width: 90%; /* Max width of the image */
+  max-height: 90%; /* Max height of the image */
+  object-fit: contain; /* Ensures the image fits within the boundaries */
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+/* Add Animation */
+@keyframes zoom {
+  from {transform: scale(0.1)}
+  to {transform: scale(1)}
+}
+
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.lightbox-caption {
+  margin-top: 15px; /* Space between image and caption */
+  text-align: center;
+  color: #ccc;
+  font-size: 16px;
+  padding: 0 10px;
+}
 /* Container for centering content */
 .container {
     width: 95%;
