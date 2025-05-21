@@ -172,7 +172,7 @@ body {
 /* ========================================================== */
 
 .top-bar {
-    background: linear-gradient(to right, #cb1b2c, #1d4f91);
+    background: color("red")
     color: white;
     padding: 18px 0;
     font-size: 14px;
