@@ -367,12 +367,12 @@ body {
 
 /* Hero Section */
 .hero-section {
-    background: url('Signage Hub (1).png') no-repeat center center/cover; /* IMPORTANT: Replace with your actual image path */
-    color: white;
+    background: url('gallery/sign.png.jpg') no-repeat center center/cover;
+    color: white; /* Default text color for content */
     text-align: center;
-    padding: 150px 20px; /* Increased padding for more vertical space */
+    padding: 100px 20px;
     position: relative;
-    overflow: hidden;
+    overflow: hidden; /* Needed if content slides in */
 }
 
 /* Overlay to make text readable over the background image */
