@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Signage Hub - Our Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="animations.css" />
+    <link rel="icon" type="image/png" href="gallery/signage hub logo 2-1.png">
+    <style>
+        /* Base Styles (for larger screens/default) */
+        .service-detail-section {
+            display: none;
+            padding: 60px 0;
+            background-color: #f9f9f9;
+            border-bottom: 1px solid #eee;
+        }
+        .service-detail-section.active {
+            display: block;
+        }
+        .service-detail-section h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+        .service-detail-section .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .service-detail-content {
+            display: flex;
+            flex-direction: column; /* Stack main text/table and gallery vertically */
+            gap: 30px; /* Space between text/table block and gallery */
+            align-items: flex-start;
+        }
+        /* Specific content areas within the service-detail-content */
+        .service-description-area {
+            display: flex; /* For text and potential future side elements */
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            gap: 30px;
+            width: 100%;
+            align-items: flex-start;
+        }
+        .service-detail-text {
+            flex: 1; /* Allows text to take available space */
+            min-width: 300px; /* Ensure a minimum width before wrapping */
+        }
+        .service-detail-gallery {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid for images */
+            gap: 15px;
+        }
+        .service-detail-gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .service-detail-text h3 {
+            color: #007bff;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+        .service-detail-text ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 20px;
+        }
+        .service-detail-text ul li {
+            margin-bottom: 10px;
+            color: #555;
+            font-size: 1.1em;
+            position: relative;
+            padding-left: 25px;
+        }
+        .service-detail-text ul li i {
+            color: #28a745;
+            position: absolute;
+            left: 0;
+            top: 5px;
+        }
+        .service-detail-text p {
+            line-height: 1.6;
+            color: #444;
+            margin-bottom: 15px;
+        }
+
+        /* Hero banner for servicework.html */
+        .service-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('gallery/hero-banner-services.jpg') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            margin-top: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 300px;
+        }
+        .service-hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+        }
+        .service-hero p {
+            font-size: 1.3em;
+            max-width: 700px;
+            margin-bottom: 30px;
+        }
+        .service-hero .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .service-hero .btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Back to Services button */
+        .back-to-services {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .back-to-services a {
+            display: inline-block;
+            background-color: #6c757d;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .back-to-services a:hover {
+            background-color: #5a6268;
+        }
+
+        /* Table styles for service details */
+        .service-info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            overflow: hidden;
+            flex-grow: 1; /* Allow table to fill space if within flex container */
+        }
+        .service-info-table th,
+        .service-info-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .service-info-table th {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+        .service-info-table td {
+            color: #555;
+            font-size: 1em;
+        }
+        .service-info-table tr:last-child td {
+            border-bottom: none;
+        }
+        .service-info-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .service-info-table tr:hover {
+            background-color: #e0f2ff;
+        }
+
+        /* ------------------------------------------- */
+        /* RESPONSIVE DESIGN (Media Queries) */
+        /* ------------------------------------------- */
+
+        /* Mobile Devices (screens smaller than 768px) */
+        @media (max-width: 767px) {
+            .service-detail-section {
+                padding: 30px 0; /* Less padding on smaller screens */
+            }
+            .service-detail-section h2 {
+                font-size: 2em; /* Smaller heading */
+                margin-bottom: 25px;
+            }
+            .service-detail-section .container {
+                padding: 0 15px; /* Smaller horizontal padding */
+            }
+            .service-detail-content {
+                gap: 20px; /* Reduced gap */
+            }
+            .service-description-area {
+                flex-direction: column; /* Stack columns on small screens */
+                gap: 20px; /* Gap between stacked text and table */
+            }
+            .service-detail-text {
+                min-width: unset; /* Remove min-width to allow full width */
+                flex: none; /* Don't flex, just take full width */
+                width: 100%;
+            }
+            .service-detail-text h3 {
+                font-size: 1.5em; /* Smaller sub-heading */
+            }
+            .service-detail-text ul li {
+                font-size: 1em; /* Slightly smaller list items */
+            }
+            .service-detail-text p {
+                font-size: 0.95em; /* Slightly smaller paragraph text */
+            }
+            .service-detail-gallery {
+                grid-template-columns: 1fr; /* Single column for images on small screens */
+                gap: 10px; /* Smaller gap between images */
+            }
+            .service-detail-gallery img {
+                height: 180px; /* Adjust image height for mobile */
+            }
+            .service-info-table th,
+            .service-info-table td {
+                padding: 8px 10px; /* Reduced table padding */
+                font-size: 0.85em; /* Smaller table text */
+            }
+            .service-hero {
+                padding: 60px 15px; /* Adjust hero padding */
+            }
+            .service-hero h1 {
+                font-size: 2.5em;
+            }
+            .service-hero p {
+                font-size: 1em;
+            }
+            .service-hero .btn {
+                padding: 10px 20px;
+            }
+            /* Adjustments for shared elements if needed */
+            .top-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .middle-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .logo {
+                margin-bottom: 10px;
+            }
+            .navbar .nav-links {
+                flex-direction: column;
+                padding: 10px 0;
+            }
+            .navbar .nav-links li {
+                margin: 5px 0;
+            }
+            .navbar .book-btn {
+                width: 90%;
+                margin-top: 10px;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-section {
+                margin-bottom: 30px;
+            }
+        }
+
+        /* Tablet Devices (screens between 768px and 1024px) */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .service-detail-section .container {
+                padding: 0 25px;
+            }
+            .service-detail-gallery {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 2-3 columns on tablets */
+            }
+            .service-detail-text h3 {
+                font-size: 1.6em;
+            }
+            .service-detail-text ul li {
+                font-size: 1.05em;
+            }
+            .service-hero h1 {
+                font-size: 3em;
+            }
+            .service-hero p {
+                font-size: 1.1em;
+            }
+            /* If you want the text and table side-by-side on tablets, uncomment this */
+            /*
+            .service-description-area {
+                flex-direction: row;
+            }
+            .service-detail-text {
+                flex: 2; // Adjust flex ratio if needed
+            }
+            .service-info-table {
+                flex: 1; // Adjust flex ratio if needed
+            }
+            */
+        }
+    </style>
+</head>
+<body>
+
+  <div class="top-bar js-animate-element">
+    <div class="top-container">
+      <div class="left-side">
+        <img src="gallery/signage_hub.png.png" alt="Signage Hub Logo" class="logo">
+        <span class="tagline">Signage Hub</span>
+      </div>
+      <div class="middle-info">
+        <div><i class="fas fa-phone-alt"></i> <span>Call anytime</span><strong><a href="tel:+256705498743">(+256)705–498–743</a></strong></div>
+        <div><i class="fas fa-envelope"></i> <span>Send email</span><strong><a href="mailto:nyolastanley70@gmail.com">nyolastanley70@gmail.com</a></strong></div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar js-animate-element">
+    <div class="nav-container">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li> <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#projects">Latest Projects</a></li>
+        <li><a href="index.html#location">Location</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <div class="right-nav">
+        <button class="book-btn hover-pulse">Get a Free Quote</button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="service-hero js-animate-element">
+      <h1>Our Services</h1>
+      <p>Explore the details of our comprehensive signage solutions designed to elevate your brand.</p>
+      <a href="index.html#contact" class="btn">Get a Free Quote</a>
+  </section>
+
+  <main>
+    <div class="container">
+
+      <section id="service-3d-signs" class="service-detail-section">
+          <h2>3D Signs</h2>
+          <div class="service-detail-content">
+              <div class="service-description-area">
+                  <div class="service-detail-text">
+                      <h3>Make Your Brand Pop!</h3>
+                      <p>Our 3D signs offer a dynamic and impactful way to make your business stand out. Crafted with precision, these dimensional signs add depth and character, ensuring your brand leaves a lasting impression.</p>
+                      <p>Whether it's for storefronts, office lobbies, or exhibitions, 3D signage provides a premium look that attracts attention and conveys professionalism. We work with a variety of materials including acrylic, metal, and PVC to create stunning effects.</p>
+                      <ul>
+                          <li><i class="fas fa-check-circle"></i> High-Quality Acrylic & Metal Fabrication</li>
+                          <li><i class="fas fa-check-circle"></i> Illuminated Options (LED Backlit/Frontlit)</li>
+                          <li><i class="fas fa-check-circle"></i> Custom Fonts and Logos</li>
+                          <li><i class="fas fa-check-circle"></i> Durable & Weather-Resistant Materials</li>
+                          <li><i class="fas fa-check-circle"></i> Professional Installation</li>
+                      </ul>
+                      <p>Ready to add dimension to your brand? Contact us for a custom quote today!</p>
+                  </div>
+                  <table class="service-info-table">
+                      <thead>
+                          <tr>
+                              <th>Detail</th>
+                              <th>Information</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>Location</td>
+                              <td>Kampala, Uganda (On-site installation available)</td>
+                          </tr>
+                          <tr>
+                              <td>Pricing</td>
+                              <td>Custom Quote (Varies by size, material, design)</td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+              
+              <div class="service-detail-gallery">
+                  <img src="gallery/3d_sign_1.jpg" alt="3D Signage Example 1">
+                  <img src="gallery/3d_sign_2.jpg" alt="3D Signage Example 2">
+                  <img src="gallery/3d_sign_3.jpg" alt="3D Signage Example 3">
+                  <img src="gallery/3d_sign_4.jpg" alt="3D Signage Example 4">
+              </div>
+          </div>
+          <div class="back-to-services">
+              <a href="index.html#services"><i class="fas fa-arrow-left"></i> Back to All Services</a>
+          </div>
+      </section>
+
+      <section id="service-2d-wall-signs" class="service-detail-section">
+          <h2>2D Wall Signs</h2>
+          <div class="service-detail-content">
+              <div class="service-description-area">
+                  <div class="service-detail-text">
+                      <h3>Clear, Concise, Effective.</h3>
+                      <p>Our 2D wall signs are perfect for clear branding and informational displays. Flat signs are versatile, cost-effective, and can be used both indoors and outdoors for storefronts, offices, and informational panels.</p>
+                      <p>We offer a range of printing techniques and materials like Foamex, Aluminium Composite Panel (ACP), and vinyl, ensuring your message is conveyed clearly and professionally. Ideal for directories, warnings, or simple brand presence.</p>
+                      <ul>
+                          <li><i class="fas fa-check-circle"></i> High-Resolution Printing</li>
+                          <li><i class="fas fa-check-circle"></i> Durable Indoor & Outdoor Materials</li>
+                          <li><i class="fas fa-check-circle"></i> Custom Sizes & Shapes</li>
+                          <li><i class="fas fa-check-circle"></i> UV-Resistant Inks for Longevity</li>
+                          <li><i class="fas fa-check-circle"></i> Quick Fabrication & Installation</li>
+                      </ul>
+                      <p>Enhance your space with our expertly crafted 2D wall signs.</p>
+                  </div>
+                  <table class="service-info-table">
+                      <thead>
+                          <tr>
+                              <th>Detail</th>
+                              <th>Information</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>Location</td>
+                              <td>Kampala, Uganda (On-site installation available)</td>
+                          </tr>
+                          <tr>
+                              <td>Pricing</td>
+                              <td>Custom Quote (Varies by size, material, design)</td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+              
+              <div class="service-detail-gallery">
+                  <img src="gallery/2d_sign_1.jpg" alt="2D Wall Signage Example 1">
+                  <img src="gallery/2d_sign_2.jpg" alt="2D Wall Signage Example 2">
+                  <img src="gallery/2d_sign_3.jpg" alt="2D Wall Signage Example 3">
+                  <img src="gallery/2d_sign_4.jpg" alt="2D Wall Signage Example 4">
+              </div>
+          </div>
+          <div class="back-to-services">
+              <a href="index.html#services"><i class="fas fa-arrow-left"></i> Back to All Services</a>
+          </div>
+      </section>
+
+      <section id="service-pylon-signs" class="service-detail-section">
+          <h2>Pylon Signs</h2>
+          <div class="service-detail-content">
+              <div class="service-description-area">
+                  <div class="service-detail-text">
+                      <h3>Maximize Your Visibility.</h3>
+                      <p>Pylon signs are tall, freestanding structures designed to provide maximum visibility from a distance, making them ideal for businesses located in shopping centers, industrial parks, or along busy highways.</p>
+                      <p>They serve as excellent wayfinding solutions and prominent advertisements, guiding customers directly to your location. We customize pylon signs to your exact specifications, including height, lighting, and design elements.</p>
+                      <ul>
+                          <li><i class="fas fa-check-circle"></i> Robust & Durable Construction</li>
+                          <li><i class="fas fa-check-circle"></i> High-Impact Visibility</li>
+                          <li><i class="fas fa-check-circle"></i> Custom Illumination Options (LED)</li>
+                          <li><i class="fas fa-check-circle"></i> Multi-Tenant Pylon Designs Available</li>
+                          <li><i class="fas fa-check-circle"></i> Professional Site Installation</li>
+                      </ul>
+                      <p>Let us help you create a towering presence for your business.</p>
+                  </div>
+                  <table class="service-info-table">
+                      <thead>
+                          <tr>
+                              <th>Detail</th>
+                              <th>Information</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>Location</td>
+                              <td>Kampala, Uganda (On-site installation available)</td>
+                          </tr>
+                          <tr>
+                              <td>Pricing</td>
+                              <td>Custom Quote (Varies by size, material, design, site)</td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+              
+              <div class="service-detail-gallery">
+                  <img src="gallery/pylon_sign_1.jpg" alt="Pylon Sign Example 1">
+                  <img src="gallery/pylon_sign_2.jpg" alt="Pylon Sign Example 2">
+                  <img src="gallery/pylon_sign_3.jpg" alt="Pylon Sign Example 3">
+                  <img src="gallery/pylon_sign_4.jpg" alt="Pylon Sign Example 4">
+              </div>
+          </div>
+          <div class="back-to-services">
+              <a href="index.html#services"><i class="fas fa-arrow-left"></i> Back to All Services</a>
+          </div>
+      </section>
+
+      <section id="service-banner-lightbox-signs" class="service-detail-section">
+          <h2>Banner & Light Box Signs</h2>
+          <div class="service-detail-content">
+              <div class="service-description-area">
+                  <div class="service-detail-text">
+                      <h3>Versatile & Vibrant Promotions.</h3>
+                      <p>Banners offer a flexible and portable solution for events, promotions, or temporary signage needs. Lightweight and easy to deploy, they deliver your message effectively wherever you need it.</p>
+                      <p>Light box signs provide illuminated, eye-catching displays that work day and night, perfect for storefronts or indoor advertising. They are energy-efficient and offer consistent, vibrant branding.</p>
+                      <ul>
+                          <li><i class="fas fa-check-circle"></i> High-Quality Vinyl Banners</li>
+                          <li><i class="fas fa-check-circle"></i> Custom Sizes & Graphics for Banners</li>
+                          <li><i class="fas fa-check-circle"></i> Energy-Efficient LED Light Boxes</li>
+                          <li><i class="fas fa-check-circle"></i> Single or Double-Sided Light Boxes</li>
+                          <li><i class="fas fa-check-circle"></i> Indoor & Outdoor Applications</li>
+                      </ul>
+                      <p>Illuminate your brand with our banners and light box solutions.</p>
+                  </div>
+                  <table class="service-info-table">
+                      <thead>
+                          <tr>
+                              <th>Detail</th>
+                              <th>Information</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>Location</td>
+                              <td>Kampala, Uganda (Delivery available)</td>
+                          </tr>
+                          <tr>
+                              <td>Pricing</td>
+                              <td>Custom Quote (Varies by size, type, quantity)</td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+              
+              <div class="service-detail-gallery">
+                  <img src="gallery/banner_lightbox_1.jpg" alt="Banner & Light Box Sign Example 1">
+                  <img src="gallery/banner_lightbox_2.jpg" alt="Banner & Light Box Sign Example 2">
+                  <img src="gallery/banner_lightbox_3.jpg" alt="Banner & Light Box Sign Example 3">
+                  <img src="gallery/banner_lightbox_4.jpg" alt="Banner & Light Box Sign Example 4">
+              </div>
+          </div>
+          <div class="back-to-services">
+              <a href="index.html#services"><i class="fas fa-arrow-left"></i> Back to All Services</a>
+          </div>
+      </section>
+
+      <section id="service-wall-stickers" class="service-detail-section">
+          <h2>Wall Stickers & Graphics</h2>
+          <div class="service-detail-content">
+              <div class="service-description-area">
+                  <div class="service-detail-text">
+                      <h3>Transform Your Interior Spaces.</h3>
+                      <p>Our custom wall stickers and graphics are perfect for adding brand elements, decorative designs, or informational displays to any interior wall. From intricate cut vinyl to full-wall graphic murals, the possibilities are endless.</p>
+                      <p>Ideal for offices, retail spaces, restaurants, or even homes, wall graphics are a flexible and cost-effective way to refresh your environment without major renovations. Easy to install and remove.</p>
+                      <ul>
+                          <li><i class="fas fa-check-circle"></i> Custom Design & Printing</li>
+                          <li><i class="fas fa-check-circle"></i> Durable Vinyl Materials</li>
+                          <li><i class="fas fa-check-circle"></i> Easy Application & Removal</li>
+                          <li><i class="fas fa-check-circle"></i> High-Quality Full-Color Graphics</li>
+                          <li><i class="fas fa-check-circle"></i> Matte, Gloss, or Textured Finishes</li>
+                      </ul>
+                      <p>Give your walls a voice with our creative wall sticker solutions.</p>
+                  </div>
+                  <table class="service-info-table">
+                      <thead>
+                          <tr>
+                              <th>Detail</th>
+                              <th>Information</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>Location</td>
+                              <td>Kampala, Uganda (On-site installation available)</td>
+                          </tr>
+                          <tr>
+                              <td>Pricing</td>
+                              <td>Custom Quote (Varies by size, complexity, material)</td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+              
+              <div class="service-detail-gallery">
+                  <img src="gallery/wall_sticker_1.jpg" alt="Wall Sticker Example 1">
+                  <img src="gallery/wall_sticker_2.jpg" alt="Wall Sticker Example 2">
+                  <img src="gallery/wall_sticker_3.jpg" alt="Wall Sticker Example 3">
+                  <img src="gallery/wall_sticker_4.jpg" alt="Wall Sticker Example 4">
+              </div>
+          </div>
+          <div class="back-to-services">
+              <a href="index.html#services"><i class="fas fa-arrow-left"></i> Back to All Services</a>
+          </div>
+      </section>
+
+      <section id="service-neon-led-signs" class="service-detail-section">
+          <h2>Neon & LED Signs</h2>
+          <div class="service-detail-content">
+              <div class="service-description-area">
+                  <div class="service-detail-text">
+                      <h3>Bright, Modern, Eye-Catching.</h3>
+                      <p>Step into the modern era of illumination with our vibrant Neon and LED signs. LED technology offers energy efficiency, durability, and a wide spectrum of colors, making them a popular choice for businesses seeking contemporary appeal.</p>
+                      <p>From classic neon-look signs to dynamic LED displays, we design and fabricate custom solutions that grab attention day and night. Perfect for storefronts, bars, restaurants, or interior decor.</p>
+                      <ul>
+                          <li><i class="fas fa-check-circle"></i> Energy-Efficient LED Technology</li>
+                          <li><i class="fas fa-check-circle"></i> Custom Designs & Vibrant Colors</li>
+                          <li><i class="fas fa-check-circle"></i> Durable & Long-Lasting</li>
+                          <li><i class="fas fa-check-circle"></i> Indoor & Outdoor Applications</li>
+                          <li><i class="fas fa-check-circle"></i> Professional Installation</li>
+                      </ul>
+                      <p>Light up your brand with a modern and captivating sign.</p>
+                  </div>
+                  <table class="service-info-table">
+                      <thead>
+                          <tr>
+                              <th>Detail</th>
+                              <th>Information</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>Location</td>
+                              <td>Kampala, Uganda (On-site installation available)</td>
+                          </tr>
+                          <tr>
+                              <td>Pricing</td>
+                              <td>Custom Quote (Varies by size, design, LEDs)</td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+              
+              <div class="service-detail-gallery">
+                  <img src="gallery/neon_led_1.jpg" alt="Neon LED Sign Example 1">
+                  <img src="gallery/neon_led_2.jpg" alt="Neon LED Sign Example 2">
+                  <img src="gallery/neon_led_3.jpg" alt="Neon LED Sign Example 3">
+                  <img src="gallery/neon_led_4.jpg" alt="Neon LED Sign Example 4">
+              </div>
+          </div>
+          <div class="back-to-services">
+              <a href="index.html#services"><i class="fas fa-arrow-left"></i> Back to All Services</a>
+          </div>
+      </section>
+
+      <section id="service-vehicle-branding" class="service-detail-section">
+          <h2>Vehicle Branding</h2>
+          <div class="service-detail-content">
+              <div class="service-description-area">
+                  <div class="service-detail-text">
+                      <h3>Your Fleet, Your Mobile Billboard.</h3>
+                      <p>Transform your company vehicles into powerful mobile advertisements with our high-quality vehicle branding services. From simple logos and contact information to full vehicle wraps, we ensure your brand is seen everywhere you go.</p>
+                      <p>Vehicle branding is a cost-effective way to increase brand awareness and reach a wider audience. Our durable vinyl graphics are weather-resistant and designed to last, maintaining a professional look for years.</p>
+                      <ul>
+                          <li><i class="fas fa-check-circle"></i> Custom Designs & Graphics</li>
+                          <li><i class="fas fa-check-circle"></i> High-Quality, Durable Vinyl</li>
+                          <li><i class="fas fa-check-circle"></i> Partial or Full Vehicle Wraps</li>
+                          <li><i class="fas fa-check-circle"></i> UV & Weather Resistant</li>
+                          <li><i class="fas fa-check-circle"></i> Professional Application</li>
+                      </ul>
+                      <p>Get noticed on the road with Signage Hub's vehicle branding.</p>
+                  </div>
+                  <table class="service-info-table">
+                      <thead>
+                          <tr>
+                              <th>Detail</th>
+                              <th>Information</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>Location</td>
+                              <td>Kampala, Uganda (Vehicle drop-off/Pick-up)</td>
+                          </tr>
+                          <tr>
+                              <td>Pricing</td>
+                              <td>Custom Quote (Varies by vehicle size, coverage, design)</td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+              
+              <div class="service-detail-gallery">
+                  <img src="gallery/vehicle_branding_1.jpg" alt="Vehicle Branding Example 1">
+                  <img src="gallery/vehicle_branding_2.jpg" alt="Vehicle Branding Example 2">
+                  <img src="gallery/vehicle_branding_3.jpg" alt="Vehicle Branding Example 3">
+                  <img src="gallery/vehicle_branding_4.jpg" alt="Vehicle Branding Example 4">
+              </div>
+          </div>
+          <div class="back-to-services">
+              <a href="index.html#services"><i class="fas fa-arrow-left"></i> Back to All Services</a>
+          </div>
+      </section>
+
+      <section id="service-wayfinding-signs" class="service-detail-section">
+          <h2>Wayfinding Signs</h2>
+          <div class="service-detail-content">
+              <div class="service-description-area">
+                  <div class="service-detail-text">
+                      <h3>Guide the Way, Seamlessly.</h3>
+                      <p>Effective wayfinding signage is crucial for large complexes, offices, hospitals, and public spaces. Our wayfinding solutions help visitors navigate your premises with ease, reducing confusion and improving efficiency.</p>
+                      <p>We design clear, intuitive, and aesthetically pleasing signage systems that integrate seamlessly with your environment. From directional signs and directories to room identifiers, we ensure your visitors find their destination effortlessly.</p>
+                      <ul>
+                          <li><i class="fas fa-check-circle"></i> Clear & Intuitive Designs</li>
+                          <li><i class="fas fa-check-circle"></i> Durable Materials for High Traffic</li>
+                          <li><i class="fas fa-check-circle"></i> Interior & Exterior Solutions</li>
+                          <li><i class="fas fa-check-circle"></i> ADA Compliant Options</li>
+                          <li><i class="fas fa-check-circle"></i> Professional Planning & Installation</li>
+                      </ul>
+                      <p>Simplify navigation for your visitors with our expert wayfinding solutions.</p>
+                  </div>
+                  <table class="service-info-table">
+                      <thead>
+                          <tr>
+                              <th>Detail</th>
+                              <th>Information</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>Location</td>
+                              <td>Kampala, Uganda (On-site consultation & installation)</td>
+                          </tr>
+                          <tr>
+                              <td>Pricing</td>
+                              <td>Custom Quote (Varies by project scale, materials)</td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+              
+              <div class="service-detail-gallery">
+                  <img src="gallery/wayfinding_sign_1.jpg" alt="Wayfinding Sign Example 1">
+                  <img src="gallery/wayfinding_sign_2.jpg" alt="Wayfinding Sign Example 2">
+                  <img src="gallery/wayfinding_sign_3.jpg" alt="Wayfinding Sign Example 3">
+                  <img src="gallery/wayfinding_sign_4.jpg" alt="Wayfinding Sign Example 4">
+              </div>
+          </div>
+          <div class="back-to-services">
+              <a href="index.html#services"><i class="fas fa-arrow-left"></i> Back to All Services</a>
+          </div>
+      </section>
+
+    </div></main>
+
+  <footer class="main-footer js-animate-element">
+    <div class="container footer-content">
+      <div class="footer-section footer-about">
+        <h4>Signage Hub</h4>
+        <img src="gallery/Email headereventgraduation - Made with PosterMyWall.jpg" alt="Signage Hub Logo" class="footer-logo">
+        <p>A Reliable Product, dedicated to providing top-quality signage solutions across Uganda.</p>
+        <div class="footer-social social-icons">
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+        </div>
+      <div class="footer-section footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">About Us</a></li>
+          <li><a href="index.html#services">Our Services</a></li>
+          <li><a href="index.html#projects">Latest Projects</a></li>
+          <li><a href="index.html#location">Location</a></li>
+          <li><a href="index.html#contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-section footer-contact">
+        <h4>Contact Info</h4>
+        <p><i class="fas fa-phone-alt"></i> <strong>Phone:</strong> <a href="tel:+256705498743">(+256)705–498–743</a></p>
+        <p><i class="fas fa-envelope"></i> <strong>Email:</strong> <a href="mailto:nyolastanley70@gmail.com">nyolastanley70@gmail.com</a></p>
+        <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> Plot 3082, Block 236, Namanye, North Road, Wakiso, Uganda</p>
+        <p><i class="fas fa-clock"></i> <strong>Office Hours:</strong> Mon - Fri: 8:00 AM - 5:00 PM</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <p>© <span id="current-year">2025</span> Signage Hub. All rights reserved.</p>
+        </div>
+    </div>
+  </footer>
+
+  <script src="index.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // --- 1. Restrict Direct Access (Revised) ---
+        const referrer = document.referrer;
+        const origin = window.location.origin;
+        const isFromIndex = referrer.includes(origin + '/index.html') || referrer === ''; // Allow if from index.html or empty (for local file testing)
+
+        // Redirect only if NOT from index AND NO specific service hash is present
+        if (!isFromIndex && !window.location.hash) {
+            window.location.href = 'index.html'; // Redirect to homepage
+            return; // Stop further script execution on this page
+        }
+
+        // --- 2. Service Visibility and Scrolling Logic ---
+
+        const hash = window.location.hash;
+        const serviceSections = document.querySelectorAll('.service-detail-section');
+        const serviceHero = document.querySelector('.service-hero');
+        const navbar = document.querySelector('.navbar');
+        const navbarHeight = navbar ? navbar.offsetHeight : 0;
+
+        // Hide the generic hero banner if a hash exists, otherwise show it
+        if (hash) {
+            if (serviceHero) {
+                serviceHero.style.display = 'none';
+            }
+        } else {
+            if (serviceHero) {
+                serviceHero.style.display = 'block';
+            }
+        }
+
+        // Hide all service detail sections
+        serviceSections.forEach(section => {
+            section.classList.remove('active');
+            section.style.display = 'none';
+        });
+
+        let targetSection = null;
+
+        if (hash) {
+            targetSection = document.querySelector(hash);
+        }
+
+        if (targetSection) {
+            // Found a valid service, show it
+            targetSection.classList.add('active');
+            targetSection.style.display = 'block';
+
+            // Scroll to the top of the selected service section
+            // Use setTimeout to ensure the element is rendered and positioned before scrolling
+            setTimeout(() => {
+                window.scrollTo({
+                    top: targetSection.offsetTop - navbarHeight - 20, // 20px for extra padding
+                    behavior: 'smooth'
+                });
+            }, 100);
+        } else {
+            // If no hash or an invalid hash, and not redirected, display the hero banner.
+            // This 'else' branch is reached if referrer check passed but no valid hash.
+            // The serviceHero will be shown here.
+            // If you want to show the first service by default if no hash is present at all,
+            // you'd add:
+            /*
+            if (serviceSections.length > 0) {
+                serviceSections[0].classList.add('active');
+                serviceSections[0].style.display = 'block';
+                setTimeout(() => {
+                    window.scrollTo({
+                        top: serviceSections[0].offsetTop - navbarHeight - 20,
+                        behavior: 'smooth'
+                    });
+                }, 100);
+            }
+            */
+        }
+
+
+        // --- Handle JS Animations for servicework.html ---
+        const elementsToAnimate = document.querySelectorAll('.js-animate-element');
+        elementsToAnimate.forEach(element => {
+            element.style.opacity = '0';
+        });
+
+        function animateElements() {
+            elementsToAnimate.forEach((element, index) => {
+                setTimeout(() => {
+                    element.classList.add('js-fade-in');
+                }, index * 100); // Staggered delay
+            });
+        }
+        animateElements();
+
+
+        // Set current year in footer
+        const currentYearSpan = document.getElementById('current-year');
+        if (currentYearSpan) {
+            currentYearSpan.textContent = new Date().getFullYear();
+        }
+    });
+  </script>
+</body>
+</html>
